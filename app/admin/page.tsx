@@ -16,7 +16,7 @@ export default async function AdminPage() {
 
   return (
     <>
-      <div className="mx-auto max-w-6xl px-4 pt-24 sm:px-6 lg:px-8 lg:pt-24">
+      <div className="mx-auto w-full max-w-6xl px-4 pt-24 sm:px-6 lg:px-8">
         <Link
           href="/"
           className="inline-flex items-center gap-1 text-[13px] text-muted transition-colors hover:text-fg"

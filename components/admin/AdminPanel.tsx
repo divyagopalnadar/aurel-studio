@@ -123,7 +123,7 @@ export function AdminPanel({ initial }: { initial: Product[] }) {
   };
 
   return (
-    <div className="mx-auto max-w-6xl px-4 pb-24 pt-24 sm:px-6 lg:px-8 lg:pt-28">
+    <div className="mx-auto w-full max-w-6xl px-4 pb-24 pt-8 sm:px-6 lg:px-8">
       {/* Title */}
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
