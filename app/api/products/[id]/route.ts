@@ -1,4 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
+import { revalidatePath } from "next/cache";
 import { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { mapProduct } from "@/lib/data";
@@ -96,6 +97,8 @@ export async function PATCH(req: NextRequest, { params }: Ctx) {
       data,
       include: { reviews: true },
     });
+    // Storefront pages are prerendered; refresh them so the change shows up.
+    revalidatePath("/", "layout");
     return NextResponse.json(mapProduct(updated));
   } catch (e) {
     if (isP2002(e))
@@ -112,6 +115,7 @@ export async function DELETE(_: NextRequest, { params }: Ctx) {
   const pid = Number(id);
   try {
     await prisma.product.delete({ where: { id: pid } });
+    revalidatePath("/", "layout");
     return NextResponse.json({ success: true });
   } catch {
     return NextResponse.json({ error: "Not found" }, { status: 404 });

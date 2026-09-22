@@ -1,4 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
+import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/db";
 import { mapProduct, getProducts } from "@/lib/data";
 import { glyphTheme } from "@/data/products";
@@ -96,6 +97,8 @@ export async function POST(req: NextRequest) {
         glyph: glyphValue,
       },
     });
+    // Storefront pages are prerendered; refresh them so the change shows up.
+    revalidatePath("/", "layout");
     return NextResponse.json(created, { status: 201 });
   } catch (e) {
     if (e instanceof Error && "code" in e && (e as { code: string }).code === "P2002") {
