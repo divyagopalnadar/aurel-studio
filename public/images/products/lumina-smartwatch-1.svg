@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" width="900" height="900">
+  <defs>
+    
+  <radialGradient id="bg" cx="50%" cy="33" r="85%">
+    <stop offset="0%" stop-color="#2c932f51e72"/>
+    <stop offset="60%" stop-color="#8821362eda"/>
+    <stop offset="100%" stop-color="#881b2d4c3"/>
+  </radialGradient>
+  <radialGradient id="glow" cx="50%" cy="42%" r="60%">
+    <stop offset="0%" stop-color="#6b547472713" stop-opacity="0.55"/>
+    <stop offset="55%" stop-color="#4f065544a5c" stop-opacity="0.14"/>
+    <stop offset="100%" stop-color="#3e81430aca7" stop-opacity="0"/>
+  </radialGradient>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+  <feGaussianBlur stdDeviation="18"/>
+</filter>
+  </defs>
+  <rect width="900" height="900" fill="url(#bg)"/>
+  <rect width="900" height="900" fill="url(#glow)"/>
+  <rect x="10" y="10" width="880" height="880" rx="48" fill="url(#glass)" opacity="0.5"/>
+  <ellipse cx="450" cy="792" rx="150" ry="13" fill="#000000" opacity="0.42" filter="url(#soft)"/>
+  <g transform="translate(450 450) rotate(0) scale(0.7) translate(-450 -450)">
+  <g transform="translate(54 126) scale(0.72)">
+      <rect x="400" y="170" width="100" height="200" rx="26" fill="url(#metalSoft)"/>
+      <path d="M400 260 H360 V560 H400" stroke="url(#metalSoft)" stroke-width="34" fill="none" stroke-linecap="round"/>
+      <path d="M500 260 H540 V560 H500" stroke="url(#metalSoft)" stroke-width="34" fill="none" stroke-linecap="round"/>
+      <rect x="360" y="250" width="180" height="330" rx="46" fill="url(#metal)"/>
+      <rect x="378" y="272" width="144" height="286" rx="34" fill="url(#unit)"/>
+      <circle cx="450" cy="360" r="44" fill="url(#acc)"/>
+      <rect x="392" y="500" width="116" height="10" rx="5" fill="url(#accLight)"/>
+      <rect x="422" y="478" width="56" height="6" rx="3" fill="#ffffff" opacity="0.5"/>
+    </g>
+</g>
+  <rect x="1" y="1" width="898" height="898" rx="48" fill="#ffffff" opacity="0.03"/>
+  <rect x="1" y="1" width="898" height="898" rx="48" fill="none" stroke="#ffffff" stroke-opacity="0.06" stroke-width="2"/>
+</svg>

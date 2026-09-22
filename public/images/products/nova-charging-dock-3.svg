@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" width="900" height="900">
+  <defs>
+    
+  <radialGradient id="bg" cx="50%" cy="21" r="85%">
+    <stop offset="0%" stop-color="#1f5441d813d3"/>
+    <stop offset="60%" stop-color="#88210aa1362"/>
+    <stop offset="100%" stop-color="#4c3b2d54c"/>
+  </radialGradient>
+  <radialGradient id="glow" cx="50%" cy="42%" r="60%">
+    <stop offset="0%" stop-color="#226a7472713" stop-opacity="0.55"/>
+    <stop offset="55%" stop-color="#1d165544a5c" stop-opacity="0.14"/>
+    <stop offset="100%" stop-color="#1a3f430aca7" stop-opacity="0"/>
+  </radialGradient>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+  <feGaussianBlur stdDeviation="18"/>
+</filter>
+  </defs>
+  <rect width="900" height="900" fill="url(#bg)"/>
+  <rect width="900" height="900" fill="url(#glow)"/>
+  <rect x="10" y="10" width="880" height="880" rx="48" fill="url(#glass)" opacity="0.5"/>
+  <ellipse cx="450" cy="792" rx="150" ry="13" fill="#000000" opacity="0.42" filter="url(#soft)"/>
+  <g transform="translate(450 450) rotate(-3) scale(0.9799999999999999) translate(-450 -450)">
+  <g transform="translate(54 126) scale(0.72)">
+      <ellipse cx="450" cy="388" rx="200" ry="120" fill="url(#unitSoft)"/>
+      <ellipse cx="450" cy="360" rx="200" ry="120" fill="url(#unit)" stroke="url(#metalSoft)" stroke-width="6"/>
+      <ellipse cx="450" cy="360" rx="120" ry="72" fill="url(#unitSoft)"/>
+      <path d="M404 330 V250 M496 330 V250" stroke="url(#metalSoft)" stroke-width="20" stroke-linecap="round"/>
+      <line x1="360" y1="330" x2="540" y2="330" stroke="url(#sheen)" stroke-width="10" opacity="0.35"/>
+    </g>
+</g>
+  <rect x="1" y="1" width="898" height="898" rx="48" fill="#ffffff" opacity="0.03"/>
+  <rect x="1" y="1" width="898" height="898" rx="48" fill="none" stroke="#ffffff" stroke-opacity="0.06" stroke-width="2"/>
+</svg>

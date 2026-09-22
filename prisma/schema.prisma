@@ -1,0 +1,59 @@
+// Prisma schema — Aurél Studio product catalog
+// Local SQLite via "file:" URL. See .env / .env.example for DATABASE_URL.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum StockStatus {
+  in_stock
+  low_stock
+  sold_out
+}
+
+model Product {
+  id             Int        @id @default(autoincrement())
+  slug           String     @unique
+  name           String
+  tagline        String
+  description    String
+  price          Int
+  compareAtPrice Int?
+  category       String
+  rating         Float      @default(0)
+  reviewCount    Int        @default(0)
+  stock          StockStatus @default(in_stock)
+  stockCount     Int        @default(0)
+  featured       Boolean    @default(false)
+  isNew          Boolean    @default(false)
+  features       String // JSON array of strings
+  colors         String // JSON array of hex strings
+  images         String // JSON array of image paths
+  hue            Int        @default(0)
+  glyph          String
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+
+  reviews Review[]
+
+  @@index([category])
+  @@index([featured])
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId Int
+  author    String
+  rating    Int
+  date      DateTime
+  title     String
+  body      String
+
+  @@index([productId])
+}
