@@ -27,7 +27,6 @@ export function ProductCard({ product }: { product: Product }) {
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
           className="object-cover transition-transform duration-300 ease-out group-hover:scale-[1.04]"
-          priority={false}
         />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 

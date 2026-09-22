@@ -8,6 +8,9 @@ import type {
   StockStatus,
 } from "@/data/products";
 
+/** Shown when a product has no images (e.g. created via the admin/API without any). */
+export const PLACEHOLDER_IMAGE = "/images/placeholder.svg";
+
 type ProductRow = Prisma.ProductGetPayload<{ include: { reviews: true } }>;
 type ReviewRow = Prisma.ReviewGetPayload<Record<string, never>>;
 
@@ -17,7 +20,7 @@ const withReviews = {
 
 function mapReview(r: ReviewRow): Review {
   return {
-    id: String(r.author) + r.title,
+    id: r.id,
     author: r.author,
     rating: r.rating,
     date: new Date(r.date).toISOString(),
@@ -27,6 +30,7 @@ function mapReview(r: ReviewRow): Review {
 }
 
 export function mapProduct(row: ProductRow): Product {
+  const images = (JSON.parse(row.images) as string[]).filter(Boolean);
   return {
     id: row.id,
     slug: row.slug,
@@ -44,7 +48,7 @@ export function mapProduct(row: ProductRow): Product {
     isNew: row.isNew,
     features: JSON.parse(row.features) as string[],
     colors: JSON.parse(row.colors) as string[],
-    images: JSON.parse(row.images) as string[],
+    images: images.length > 0 ? images : [PLACEHOLDER_IMAGE],
     hue: row.hue,
     glyph: row.glyph as Glyph,
     reviews: row.reviews.map(mapReview),

@@ -1,11 +1,7 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  images: {
-    dangerouslyAllowSVG: true,
-    contentDispositionType: "inline",
-    remotePatterns: [],
-  },
-};
+// Product imagery is local SVG. next/image serves `.svg` sources as-is
+// (unoptimized) by default, so `images.dangerouslyAllowSVG` is not needed.
+const nextConfig: NextConfig = {};
 
 export default nextConfig;

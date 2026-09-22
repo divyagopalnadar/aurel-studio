@@ -1,10 +1,13 @@
 import Link from "next/link";
-import { getProductById, getRelatedProducts } from "@/lib/data";
+import { getProductById, getProductBySlug, getRelatedProducts } from "@/lib/data";
 import { ProductCard } from "./ProductCard";
 import { ArrowRightIcon } from "@/lib/icons";
 
 export async function FeaturedStrip() {
-  const anchor = (await getProductById(1))!;
+  const anchor =
+    (await getProductBySlug("aurelia-wireless-headphones")) ??
+    (await getProductById(1));
+  if (!anchor) return null;
   const featured = (await getRelatedProducts(anchor, 4)).slice(0, 4);
 
   return (

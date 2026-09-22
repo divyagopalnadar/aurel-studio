@@ -63,7 +63,7 @@ export function ProductDetail({ product }: { product: Product }) {
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="animate-fade object-cover"
-              priority
+              loading="eager"
             />
             <div className="absolute left-4 top-4 flex flex-col gap-2">
               {product.isNew && <Badge tone="brand">New</Badge>}
@@ -90,7 +90,15 @@ export function ProductDetail({ product }: { product: Product }) {
                 )}
                 aria-label={`View image ${i + 1}`}
               >
-                <Image src={img} alt="" fill sizes="128px" className="object-cover" />
+                {/* Eager: the gallery sits above the fold and shares its first src with the LCP image. */}
+                <Image
+                  src={img}
+                  alt=""
+                  fill
+                  sizes="128px"
+                  loading="eager"
+                  className="object-cover"
+                />
               </button>
             ))}
           </div>

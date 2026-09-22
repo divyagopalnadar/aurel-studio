@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getProductById } from "@/lib/data";
+import { getProductById, getProductBySlug } from "@/lib/data";
 import { Button } from "./ui/Button";
 import { Stars } from "./ui/Stars";
 import { Badge } from "./ui/Badge";
@@ -9,7 +9,8 @@ import { ArrowRightIcon, SparkIcon } from "@/lib/icons";
 
 export async function Hero() {
   const featured =
-    (await getProductById(14)) ?? (await getProductById(1))!;
+    (await getProductBySlug("orbit-4k-drone")) ?? (await getProductById(1));
+  if (!featured) return null;
   const discount = discountPercent(featured.price, featured.compareAtPrice);
 
   return (
@@ -74,6 +75,7 @@ export async function Hero() {
                 alt={featured.name}
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
+                loading="eager"
                 className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
               />
               <div className="absolute left-4 top-4 flex flex-col gap-2">
