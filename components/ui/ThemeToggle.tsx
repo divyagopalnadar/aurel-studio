@@ -1,31 +1,46 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { MoonIcon, SunIcon } from "@/lib/icons";
 
 const THEME_KEY = "aurel-theme";
 
-function initialTheme(): "dark" | "light" {
-  if (typeof document !== "undefined") {
-    return document.documentElement.classList.contains("dark")
-      ? "dark"
-      : "light";
+type Theme = "dark" | "light";
+
+// The <html> "dark" class is set before hydration by the inline script in
+// app/layout.tsx, so it is the source of truth. Subscribing to it through
+// useSyncExternalStore lets the server render a stable default and the client
+// switch to the real theme right after hydration, without a mismatch.
+function subscribe(onChange: () => void) {
+  const observer = new MutationObserver(onChange);
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["class"],
+  });
+  return () => observer.disconnect();
+}
+
+const getSnapshot = (): Theme =>
+  document.documentElement.classList.contains("dark") ? "dark" : "light";
+
+const getServerSnapshot = (): Theme => "dark";
+
+function applyTheme(theme: Theme) {
+  const root = document.documentElement;
+  root.classList.toggle("dark", theme === "dark");
+  // keep color-scheme in sync for scrollbars/inputs
+  root.style.colorScheme = theme;
+  try {
+    localStorage.setItem(THEME_KEY, theme);
+  } catch {
+    /* storage unavailable (private mode) */
   }
-  return "dark";
 }
 
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<"dark" | "light">(initialTheme);
+  const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
-  useEffect(() => {
-    const root = document.documentElement;
-    root.classList.toggle("dark", theme === "dark");
-    localStorage.setItem(THEME_KEY, theme);
-    // keep color-scheme in sync for scrollbars/inputs
-    root.style.colorScheme = theme;
-  }, [theme]);
-
-  const toggle = () => setTheme((t) => (t === "dark" ? "light" : "dark"));
+  const toggle = () => applyTheme(theme === "dark" ? "light" : "dark");
 
   return (
     <button

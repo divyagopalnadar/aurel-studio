@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import { CartProvider } from "@/context/CartContext";
 import { Header } from "@/components/Header";
 import { CartDrawer } from "@/components/CartDrawer";
@@ -30,7 +31,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
       <head>
-        <script
+        {/* Applies the saved/system theme before first paint to avoid a flash. */}
+        <Script
+          id="theme-init"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var k="aurel-theme";var t=localStorage.getItem(k);var d="dark";if(!t){var p=window.matchMedia("(prefers-color-scheme: light)");d=p.matches?"light":"dark";}else{d=t;}var r=document.documentElement;r.classList.toggle("dark",d==="dark");r.style.colorScheme=d;}catch(e){document.documentElement.classList.add("dark");}})();`,
           }}
