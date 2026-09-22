@@ -11,7 +11,7 @@ concurrency:
 
 jobs:
   verify:
-    name: Lint, typecheck & build
+    name: Database build (lint, typecheck, build)
     runs-on: ubuntu-latest
     env:
       # Throwaway SQLite database (resolved relative to prisma/schema.prisma).
