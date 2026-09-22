@@ -1,16 +1,49 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" width="900" height="900">
   <defs>
     
-  <radialGradient id="bg" cx="50%" cy="21" r="85%">
-    <stop offset="0%" stop-color="#328141d813d3"/>
-    <stop offset="60%" stop-color="#88213621192"/>
-    <stop offset="100%" stop-color="#6e6b2d4c3"/>
+  <radialGradient id="bg" cx="50%" cy="21%" r="85%">
+    <stop offset="0%" stop-color="#5a31aa"/>
+    <stop offset="60%" stop-color="#33151a"/>
+    <stop offset="100%" stop-color="#180b1e"/>
   </radialGradient>
   <radialGradient id="glow" cx="50%" cy="42%" r="60%">
-    <stop offset="0%" stop-color="#4ffd7472713" stop-opacity="0.55"/>
-    <stop offset="55%" stop-color="#3c4c5544a5c" stop-opacity="0.14"/>
-    <stop offset="100%" stop-color="#30e9430aca7" stop-opacity="0"/>
+    <stop offset="0%" stop-color="#8147f5" stop-opacity="0.55"/>
+    <stop offset="55%" stop-color="#5a18dc" stop-opacity="0.14"/>
+    <stop offset="100%" stop-color="#4e1fad" stop-opacity="0"/>
   </radialGradient>
+    <linearGradient id="metal" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#c7c0ce"/>
+    <stop offset="100%" stop-color="#4e3960"/>
+  </linearGradient>
+    <linearGradient id="metalSoft" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#a99eb3"/>
+    <stop offset="100%" stop-color="#3e2d4d"/>
+  </linearGradient>
+    <linearGradient id="acc" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#8c69d3"/>
+    <stop offset="100%" stop-color="#5730a6"/>
+  </linearGradient>
+    <linearGradient id="accLight" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#bda8e6"/>
+    <stop offset="100%" stop-color="#8661d1"/>
+  </linearGradient>
+    <linearGradient id="unit" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#492d80"/>
+    <stop offset="100%" stop-color="#271844"/>
+  </linearGradient>
+    <linearGradient id="unitSoft" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#3d2867"/>
+    <stop offset="100%" stop-color="#23173b"/>
+  </linearGradient>
+    <linearGradient id="sheen" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+    <stop offset="50%" stop-color="#ffffff" stop-opacity="0.9"/>
+    <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+  </linearGradient>
+    <linearGradient id="glass" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.32"/>
+    <stop offset="100%" stop-color="#ffffff" stop-opacity="0.02"/>
+  </linearGradient>
     <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
   <feGaussianBlur stdDeviation="18"/>
 </filter>

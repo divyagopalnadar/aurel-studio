@@ -31,9 +31,12 @@ const META = [
   { slug: "frost-insulated-bottle", glyph: "bottle", hue: 210 },
 ];
 
+// s and l are percentages (0–100), matching CSS hsl().
 function hsl(h, s, l) {
   h = ((h % 360) + 360) % 360;
-  const a = (s * Math.min(l, 1 - l)) / 100;
+  s /= 100;
+  l /= 100;
+  const a = s * Math.min(l, 1 - l);
   const f = (n) => {
     const k = (n + h / 30) % 12;
     const col = l - a * Math.max(-1, Math.min(k - 3, 9 - k, 1));
@@ -51,7 +54,7 @@ function baseGradient(hue, floor) {
   const c0 = hsl(hue + 90, 42, 14);
   const c1 = hsl(hue + 20, 46, 8);
   return `
-  <radialGradient id="bg" cx="50%" cy="${fmt(48 - floor)}" r="85%">
+  <radialGradient id="bg" cx="50%" cy="${fmt(48 - floor)}%" r="85%">
     <stop offset="0%" stop-color="${hsl(hue, 55, floor + 16)}"/>
     <stop offset="60%" stop-color="${c0}"/>
     <stop offset="100%" stop-color="${c1}"/>
@@ -97,9 +100,8 @@ function glassReflect() {
 }
 
 const defs = (hue, floor = 16) => {
-  let extra = "";
-  if (floor === 16) {
-    extra = `
+  // Shared paints referenced by every glyph painter and the glass overlay.
+  const extra = `
     ${metalGrad("metal", hue + 12, 78, 30)}
     ${metalGrad("metalSoft", hue + 12, 66, 24)}
     ${bodyGrad("acc", hue, 62, 42)}
@@ -108,7 +110,6 @@ const defs = (hue, floor = 16) => {
     ${bodyGrad("unitSoft", hue, 28, 16, 44)}
     ${whoosh("sheen", "#ffffff")}
     ${glassReflect()}`;
-  }
   return baseGradient(hue, floor) + glowGradient(hue) + extra;
 };
 
@@ -125,6 +126,7 @@ const G = {
     const pad = bodyGrad("pad", hue + 20, 20, 12, 50);
     const accFill = accent ? `url(#acc)` : hsl(hue, 60, 55);
     return `
+      <defs>${body}${pad}</defs>
       <ellipse cx="230" cy="430" rx="52" ry="120" transform="rotate(-18 230 430)" fill="url(#ph)" />
       <path d="M268 420 A232 232 0 0 1 632 420" stroke="${accFill}" stroke-width="26" fill="none" stroke-linecap="round"/>
       <path d="M238 320 C238 240 330 180 450 180 C570 180 662 240 662 320"
