@@ -3,13 +3,7 @@ import { revalidatePath } from "next/cache";
 import { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { mapProduct } from "@/lib/data";
-import { glyphTheme } from "@/data/products";
-
-const parseJsonArray = (v: unknown): string[] | null => {
-  if (!Array.isArray(v)) return null;
-  if (v.some((x) => typeof x !== "string")) return null;
-  return v;
-};
+import { parseColourArray, parseStringArray } from "@/lib/product-input";
 
 type Ctx = { params: Promise<{ id: string }> };
 
@@ -79,16 +73,18 @@ export async function PATCH(req: NextRequest, { params }: Ctx) {
   if (featured !== undefined) data.featured = featured;
   const isNew = pickBool("isNew");
   if (isNew !== undefined) data.isNew = isNew;
-  const hue = pickNum("hue");
-  if (hue !== undefined) data.hue = hue;
-  const glyph = pickStr("glyph");
-  if (glyph && glyph in glyphTheme) data.glyph = glyph;
+  const material = pickStr("material");
+  if (material !== undefined) data.material = material;
+  const care = pickStr("care");
+  if (care !== undefined) data.care = care;
 
-  const features = parseJsonArray(body.features);
+  const features = parseStringArray(body.features);
   if (features) data.features = JSON.stringify(features);
-  const colors = parseJsonArray(body.colors);
+  const sizes = parseStringArray(body.sizes);
+  if (sizes) data.sizes = JSON.stringify(sizes);
+  const colors = parseColourArray(body.colors);
   if (colors) data.colors = JSON.stringify(colors);
-  const images = parseJsonArray(body.images);
+  const images = parseStringArray(body.images);
   if (images) data.images = JSON.stringify(images);
 
   try {

@@ -6,12 +6,11 @@ import { useCart } from "@/context/CartContext";
 import { Button } from "@/components/ui/Button";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { cn } from "@/lib/utils";
-import { BoxIcon, CloseIcon, MenuIcon, ShoppingBagIcon } from "@/lib/icons";
+import { CloseIcon, MenuIcon, ShoppingBagIcon } from "@/lib/icons";
 
 const NAV = [
-  { href: "/", label: "Shop" },
-  { href: "/#coleccion", label: "Collection" },
-  { href: "/#featured", label: "Featured" },
+  { href: "/#collection", label: "Shop" },
+  { href: "/#featured", label: "The Edit" },
   { href: "/admin", label: "Admin" },
 ];
 
@@ -45,17 +44,12 @@ export function Header() {
         )}
       >
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <Link href="/" className="group flex items-center gap-2.5">
-            <span className="grid size-9 place-items-center rounded-xl bg-brand/15 text-brand-soft ring-1 ring-inset ring-brand/30 transition-colors group-hover:bg-brand/25">
-              <BoxIcon className="size-5" />
+          <Link href="/" className="flex items-baseline gap-2" aria-label="Aurél Studio home">
+            <span className="font-serif text-[26px] font-semibold leading-none tracking-tight text-fg">
+              Aurél
             </span>
-            <span className="flex flex-col leading-none">
-              <span className="text-[15px] font-semibold tracking-tight text-fg">
-                Aurél
-              </span>
-              <span className="text-[9px] font-medium uppercase tracking-[0.22em] text-faint">
-                Studio
-              </span>
+            <span className="text-[10px] font-medium uppercase tracking-[0.28em] text-faint">
+              Studio
             </span>
           </Link>
 

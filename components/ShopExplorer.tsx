@@ -6,7 +6,6 @@ import { categories } from "@/data/products";
 import { ProductCard } from "./ProductCard";
 import { cn, formatPrice } from "@/lib/utils";
 import {
-  BoxIcon,
   CheckIcon,
   ChevronDownIcon,
   CloseIcon,
@@ -59,7 +58,8 @@ export function ShopExplorer({ products }: { products: Product[] }) {
         !q ||
         p.name.toLowerCase().includes(q) ||
         p.category.toLowerCase().includes(q) ||
-        p.tagline.toLowerCase().includes(q);
+        p.tagline.toLowerCase().includes(q) ||
+        p.material.toLowerCase().includes(q);
       const matchPrice =
         priceBand === "Any" ||
         (priceBand === "Under $150" && p.price < 150) ||
@@ -92,7 +92,7 @@ export function ShopExplorer({ products }: { products: Product[] }) {
   const maxPrice = Math.max(...products.map((p) => p.price));
 
   return (
-    <section id="coleccion" className="mx-auto max-w-7xl scroll-mt-20 px-4 sm:px-6 lg:px-8">
+    <section id="collection" className="mx-auto max-w-7xl scroll-mt-20 px-4 pt-20 sm:px-6 lg:px-8">
       <div className="flex flex-col gap-6">
         {/* Heading */}
         <div className="flex flex-col gap-2">
@@ -100,11 +100,11 @@ export function ShopExplorer({ products }: { products: Product[] }) {
             The collection
           </p>
           <div className="flex flex-wrap items-end justify-between gap-3">
-            <h2 className="text-2xl font-semibold tracking-tight text-fg sm:text-3xl">
+            <h2 className="font-serif text-3xl font-medium tracking-tight text-fg sm:text-4xl">
               Everything we make
               <span className="ml-2 align-middle text-faint">({products.length})</span>
             </h2>
-            <p className="text-sm text-muted">Curated objects, one standard.</p>
+            <p className="text-sm text-muted">Made in small runs, in natural materials.</p>
           </div>
         </div>
 
@@ -115,7 +115,7 @@ export function ShopExplorer({ products }: { products: Product[] }) {
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search headphones, wearables, tech…"
+            placeholder="Search cashmere, leather, outerwear…"
             className="glass h-12 w-full rounded-xl border border-edge pl-11 pr-10 text-[15px] text-fg placeholder:text-faint transition-all duration-200 focus:border-brand/50 focus:outline-none focus:ring-4 focus:ring-brand/15"
           />
           {query && (
@@ -142,7 +142,7 @@ export function ShopExplorer({ products }: { products: Product[] }) {
                 className={cn(
                   "shrink-0 rounded-full px-4 py-2 text-[13px] font-medium transition-all duration-200",
                   category === c
-                    ? "bg-brand text-white shadow-glow"
+                    ? "bg-brand text-white"
                     : "bg-fg/[0.05] text-muted ring-1 ring-inset ring-edge hover:bg-fg/[0.09] hover:text-fg"
                 )}
               >
@@ -301,7 +301,7 @@ function EmptyState({ query, onReset }: { query: string; onReset: () => void }) 
   return (
     <div className="animate-scale-in flex flex-col items-center justify-center gap-5 rounded-2xl border border-dashed border-edge bg-fg/[0.015] px-8 py-20 text-center">
       <div className="grid size-16 place-items-center rounded-2xl bg-fg/[0.04] text-faint ring-1 ring-inset ring-edge">
-        <BoxIcon className="size-7" />
+        <SearchIcon className="size-7" />
       </div>
       <div className="max-w-sm">
         <h3 className="text-lg font-semibold text-fg">
@@ -316,7 +316,7 @@ function EmptyState({ query, onReset }: { query: string; onReset: () => void }) 
       <button
         type="button"
         onClick={onReset}
-        className="rounded-xl bg-brand px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-brand-soft"
+        className="rounded-xl bg-brand px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-brand-hover"
       >
         Reset filters
       </button>

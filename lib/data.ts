@@ -1,15 +1,13 @@
 import { Prisma } from "@prisma/client";
 import { prisma } from "./db";
+import { PLACEHOLDER_IMAGE, resolveImage } from "./images";
 import type {
   Category,
-  Glyph,
+  Colour,
   Product,
   Review,
   StockStatus,
 } from "@/data/products";
-
-/** Shown when a product has no images (e.g. created via the admin/API without any). */
-export const PLACEHOLDER_IMAGE = "/images/placeholder.svg";
 
 type ProductRow = Prisma.ProductGetPayload<{ include: { reviews: true } }>;
 type ReviewRow = Prisma.ReviewGetPayload<Record<string, never>>;
@@ -29,8 +27,24 @@ function mapReview(r: ReviewRow): Review {
   };
 }
 
+function parseList<T>(json: string): T[] {
+  try {
+    const value: unknown = JSON.parse(json);
+    return Array.isArray(value) ? (value as T[]) : [];
+  } catch {
+    return [];
+  }
+}
+
+/** Accepts `{ name, hex }` objects and, for older rows, bare hex strings. */
+function parseColours(json: string): Colour[] {
+  return parseList<Colour | string>(json).map((c) =>
+    typeof c === "string" ? { name: c, hex: c } : c
+  );
+}
+
 export function mapProduct(row: ProductRow): Product {
-  const images = (JSON.parse(row.images) as string[]).filter(Boolean);
+  const images = parseList<string>(row.images).filter(Boolean).map(resolveImage);
   return {
     id: row.id,
     slug: row.slug,
@@ -46,11 +60,12 @@ export function mapProduct(row: ProductRow): Product {
     stockCount: row.stockCount,
     featured: row.featured,
     isNew: row.isNew,
-    features: JSON.parse(row.features) as string[],
-    colors: JSON.parse(row.colors) as string[],
+    features: parseList<string>(row.features),
+    material: row.material,
+    care: row.care,
+    sizes: parseList<string>(row.sizes),
+    colors: parseColours(row.colors),
     images: images.length > 0 ? images : [PLACEHOLDER_IMAGE],
-    hue: row.hue,
-    glyph: row.glyph as Glyph,
     reviews: row.reviews.map(mapReview),
   };
 }
@@ -77,6 +92,17 @@ export async function getProductBySlug(slug: string): Promise<Product | null> {
     where: { slug },
   });
   return row ? mapProduct(row as ProductRow) : null;
+}
+
+/** Products flagged as featured, best rated first. */
+export async function getFeaturedProducts(limit = 4): Promise<Product[]> {
+  const rows = await prisma.product.findMany({
+    ...withReviews,
+    where: { featured: true },
+    orderBy: [{ rating: "desc" }, { id: "asc" }],
+    take: limit,
+  });
+  return (rows as ProductRow[]).map(mapProduct);
 }
 
 export async function getRelatedProducts(
@@ -118,6 +144,7 @@ export const data = {
   products: getProducts,
   productById: getProductById,
   productBySlug: getProductBySlug,
+  featuredProducts: getFeaturedProducts,
   relatedProducts: getRelatedProducts,
   categories: getCategories,
 };

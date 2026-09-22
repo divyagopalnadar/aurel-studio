@@ -3,7 +3,7 @@ import { products, type Product } from "../data/products";
 
 const prisma = new PrismaClient();
 
-function toData(p: Product): Prisma.ProductCreateInput {
+function fields(p: Product) {
   return {
     slug: p.slug,
     name: p.name,
@@ -19,38 +19,42 @@ function toData(p: Product): Prisma.ProductCreateInput {
     featured: p.featured,
     isNew: p.isNew,
     features: JSON.stringify(p.features),
+    material: p.material,
+    care: p.care,
+    sizes: JSON.stringify(p.sizes),
     colors: JSON.stringify(p.colors),
     images: JSON.stringify(p.images),
-    hue: p.hue,
-    glyph: p.glyph,
-    reviews: {
-      create: p.reviews.map((r) => ({
-        author: r.author,
-        rating: r.rating,
-        title: r.title,
-        body: r.body,
-        date: new Date(r.date),
-      })),
-    },
-  };
+  } satisfies Prisma.ProductCreateInput;
+}
+
+function reviews(p: Product) {
+  return p.reviews.map((r) => ({
+    author: r.author,
+    rating: r.rating,
+    title: r.title,
+    body: r.body,
+    date: new Date(r.date),
+  }));
 }
 
 async function main() {
   console.log(`Seeding ${products.length} products…`);
 
-  for (const p of products) {
-    await prisma.product.upsert({
-      where: { slug: p.slug },
-      update: toData(p),
-      create: toData(p),
-    });
-  }
-
-  // Keep the DB in sync: remove products that no longer exist in the seed.
+  // Keep the DB in sync: remove products that no longer exist in the seed
+  // first, so seed ids are free to reuse.
   const slugs = products.map((p) => p.slug);
   const deleted = await prisma.product.deleteMany({
     where: { slug: { notIn: slugs } },
   });
+
+  for (const p of products) {
+    await prisma.product.upsert({
+      where: { slug: p.slug },
+      // Replace reviews instead of appending duplicates on every re-seed.
+      update: { ...fields(p), reviews: { deleteMany: {}, create: reviews(p) } },
+      create: { id: p.id, ...fields(p), reviews: { create: reviews(p) } },
+    });
+  }
 
   const total = await prisma.product.count();
   console.log(`Done. ${total} products in DB (${deleted.count} removed).`);

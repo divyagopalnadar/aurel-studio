@@ -23,7 +23,7 @@ export function Stars({
             key={i}
             className={cn(
               size === "sm" ? "size-3" : "size-4",
-              filled ? "text-amber-500 dark:text-amber-300" : "text-faint"
+              filled ? "text-[#a8823f] dark:text-[#d6b577]" : "text-faint"
             )}
           />
         );

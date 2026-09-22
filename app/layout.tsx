@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Cormorant_Garamond, Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import { CartProvider } from "@/context/CartContext";
 import { Header } from "@/components/Header";
@@ -17,10 +17,17 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
+  subsets: ["latin"],
+  weight: ["500", "600"],
+  style: ["normal", "italic"],
+});
+
 export const metadata: Metadata = {
-  title: "Aurél Studio — Premium Audio, Wearables & Everyday Tech",
+  title: "Aurél Studio — Considered Clothing & Accessories",
   description:
-    "Thoughtfully engineered audio, wearables, and everyday electronics. A fictional premium e-commerce store built with Next.js.",
+    "Quiet, well-made clothing and accessories in natural materials: outerwear, knitwear, shirts, leather bags and jewelry. A fictional store built with Next.js.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -28,7 +35,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} antialiased`}
     >
       <head>
         {/* Applies the saved/system theme before first paint to avoid a flash. */}

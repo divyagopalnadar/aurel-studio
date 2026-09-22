@@ -1,10 +1,10 @@
 const ITEMS = [
-  "Free two-day shipping",
-  "2-year warranty",
-  "30-day returns",
-  "Carbon-neutral delivery",
-  "Secure checkout",
-  "Limited lifetime support",
+  "Complimentary shipping over $200",
+  "Free returns within 30 days",
+  "Natural fibres",
+  "Free repairs for life",
+  "Responsibly made in small runs",
+  "Gift wrapping on request",
 ];
 
 export function Marquee() {
@@ -15,6 +15,8 @@ export function Marquee() {
         {row.map((item, i) => (
           <span
             key={i}
+            // The second copy exists only for the seamless loop.
+            aria-hidden={i >= ITEMS.length || undefined}
             className="flex items-center gap-10 text-[12px] font-medium uppercase tracking-[0.16em] text-faint"
           >
             {item}

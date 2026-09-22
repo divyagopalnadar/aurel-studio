@@ -2,8 +2,8 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import type { Product } from "@/data/products";
-import { categories, glyphTheme } from "@/data/products";
+import type { Colour, Product } from "@/data/products";
+import { categories } from "@/data/products";
 import { Badge } from "@/components/ui/Badge";
 import { Stars } from "@/components/ui/Stars";
 import { Button } from "@/components/ui/Button";
@@ -33,9 +33,10 @@ interface FormState {
   stockCount: string;
   featured: boolean;
   isNew: boolean;
-  glyph: string;
-  hue: string;
   features: string;
+  material: string;
+  care: string;
+  sizes: string;
   colors: string;
   images: string;
 }
@@ -55,10 +56,11 @@ function toForm(p: Product): FormState {
     stockCount: String(p.stockCount),
     featured: p.featured,
     isNew: p.isNew,
-    glyph: p.glyph,
-    hue: String(p.hue),
     features: p.features.join("\n"),
-    colors: p.colors.join("\n"),
+    material: p.material,
+    care: p.care,
+    sizes: p.sizes.join(", "),
+    colors: p.colors.map((c) => `${c.name} ${c.hex}`).join("\n"),
     images: p.images.join("\n"),
   };
 }
@@ -68,7 +70,7 @@ const emptyForm: FormState = {
   slug: "",
   tagline: "",
   description: "",
-  category: "Audio",
+  category: "Outerwear",
   price: "",
   compareAtPrice: "",
   rating: "4.5",
@@ -77,10 +79,11 @@ const emptyForm: FormState = {
   stockCount: "10",
   featured: false,
   isNew: true,
-  glyph: "box",
-  hue: "220",
   features: "",
-  colors: "#e7e7ec",
+  material: "",
+  care: "",
+  sizes: "XS, S, M, L, XL",
+  colors: "Oatmeal #d9cbb3",
   images: "",
 };
 
@@ -130,7 +133,7 @@ export function AdminPanel({ initial }: { initial: Product[] }) {
           <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-brand-soft">
             Admin
           </p>
-          <h1 className="mt-1 text-2xl font-semibold tracking-tight text-fg sm:text-3xl">
+          <h1 className="mt-1 font-serif text-3xl font-medium tracking-tight text-fg sm:text-4xl">
             Products
           </h1>
           <p className="mt-1 text-sm text-muted">
@@ -169,7 +172,7 @@ export function AdminPanel({ initial }: { initial: Product[] }) {
               key={p.id}
               className="grid grid-cols-[52px_1fr_auto] items-center gap-3 px-4 py-3 transition-colors hover:bg-fg/[0.02] sm:grid-cols-[64px_1fr_1fr_88px_88px_132px] sm:gap-4 lg:grid-cols-[64px_2fr_1fr_110px_110px_120px_132px]"
             >
-              <Link href={`/product/${p.id}`} className="relative block size-13 overflow-hidden rounded-lg ring-1 ring-inset ring-edge">
+              <Link href={`/product/${p.id}`} className="relative block aspect-[4/5] w-12 overflow-hidden rounded-lg bg-panel ring-1 ring-inset ring-edge">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={p.images[0]} alt="" className="size-full object-cover" />
               </Link>
@@ -270,7 +273,7 @@ export function AdminPanel({ initial }: { initial: Product[] }) {
 
 function StockBadge({ stock }: { stock: Product["stock"] }) {
   if (stock === "low_stock") return <Badge tone="amber">Low</Badge>;
-  if (stock === "sold_out") return <Badge tone="rose">Sold out</Badge>;
+  if (stock === "sold_out") return <Badge tone="sale">Sold out</Badge>;
   return <Badge tone="green">In stock</Badge>;
 }
 
@@ -329,10 +332,11 @@ function EditorModal({
       stockCount: Number(form.stockCount) || 0,
       featured: form.featured,
       isNew: form.isNew,
-      glyph: form.glyph || "box",
-      hue: Number(form.hue) || 220,
       features: lines(form.features),
-      colors: lines(form.colors).length ? lines(form.colors) : ["#e7e7ec"],
+      material: form.material,
+      care: form.care,
+      sizes: form.sizes.split(",").map((x) => x.trim()).filter(Boolean),
+      colors: parseColours(form.colors),
       images: lines(form.images),
     };
 
@@ -380,7 +384,7 @@ function EditorModal({
                 <img
                   src={previewImage}
                   alt="Preview"
-                  className="size-16 rounded-lg object-cover ring-1 ring-inset ring-edge"
+                  className="aspect-[4/5] w-14 rounded-lg object-cover ring-1 ring-inset ring-edge"
                 />
                 <p className="text-[12px] text-faint">Primary image preview</p>
               </div>
@@ -388,10 +392,10 @@ function EditorModal({
 
             <div className="grid gap-4 sm:grid-cols-2">
               <Field label="Name *">
-                <input className={inputCls} value={form.name} onChange={(e) => set("name", e.target.value)} placeholder="Aurelia Wireless Headphones" />
+                <input className={inputCls} value={form.name} onChange={(e) => set("name", e.target.value)} placeholder="Alder Wool Overcoat" />
               </Field>
               <Field label="Slug">
-                <input className={inputCls} value={form.slug} onChange={(e) => set("slug", e.target.value)} placeholder="aurelia-wireless-headphones" />
+                <input className={inputCls} value={form.slug} onChange={(e) => set("slug", e.target.value)} placeholder="alder-wool-overcoat" />
               </Field>
             </div>
 
@@ -420,24 +424,17 @@ function EditorModal({
                   ))}
                 </select>
               </Field>
-              <Field label="Glyph">
-                <select className={inputCls} value={form.glyph} onChange={(e) => set("glyph", e.target.value)}>
-                  {Object.keys(glyphTheme).map((g) => (
-                    <option key={g} value={g}>{g}</option>
-                  ))}
-                </select>
+              <Field label="Sizes (comma separated)">
+                <input className={inputCls} value={form.sizes} onChange={(e) => set("sizes", e.target.value)} placeholder="XS, S, M, L, XL or One size" />
               </Field>
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-3">
+            <div className="grid gap-4 sm:grid-cols-2">
               <Field label="Rating">
                 <input type="number" step="0.1" min={0} max={5} className={inputCls} value={form.rating} onChange={(e) => set("rating", e.target.value)} />
               </Field>
               <Field label="Reviews">
                 <input type="number" min={0} className={inputCls} value={form.reviewCount} onChange={(e) => set("reviewCount", e.target.value)} />
-              </Field>
-              <Field label="Hue (0–360)">
-                <input type="number" min={0} max={360} className={inputCls} value={form.hue} onChange={(e) => set("hue", e.target.value)} />
               </Field>
             </div>
 
@@ -459,16 +456,25 @@ function EditorModal({
               <Checkbox label="New" checked={form.isNew} onChange={(v) => set("isNew", v)} />
             </div>
 
-            <Field label="Features (one per line)">
-              <textarea className={inputCls + " min-h-20 resize-y"} value={form.features} onChange={(e) => set("features", e.target.value)} placeholder={"Adaptive ANC\n40-hour battery"} />
+            <Field label="Details (one per line)">
+              <textarea className={inputCls + " min-h-20 resize-y"} value={form.features} onChange={(e) => set("features", e.target.value)} placeholder={"Hand-finished seams\nHorn buttons"} />
             </Field>
 
-            <Field label="Colors (one hex per line)">
-              <textarea className={inputCls + " min-h-20 resize-y"} value={form.colors} onChange={(e) => set("colors", e.target.value)} placeholder="#0b0b12\n#4f46e5" />
+            <div className="grid gap-4 sm:grid-cols-2">
+              <Field label="Material">
+                <input className={inputCls} value={form.material} onChange={(e) => set("material", e.target.value)} placeholder="100% cashmere" />
+              </Field>
+              <Field label="Care">
+                <input className={inputCls} value={form.care} onChange={(e) => set("care", e.target.value)} placeholder="Dry clean only" />
+              </Field>
+            </div>
+
+            <Field label="Colours (one per line: name #hex)">
+              <textarea className={inputCls + " min-h-20 resize-y"} value={form.colors} onChange={(e) => set("colors", e.target.value)} placeholder={"Camel #b8875a\nCharcoal #3b3a38"} />
             </Field>
 
             <Field label="Images (one path per line, first is primary)">
-              <textarea className={inputCls + " min-h-20 resize-y font-mono text-[13px]"} value={form.images} onChange={(e) => set("images", e.target.value)} placeholder={"/images/products/aurelia-wireless-headphones-1.svg"} />
+              <textarea className={inputCls + " min-h-20 resize-y font-mono text-[13px]"} value={form.images} onChange={(e) => set("images", e.target.value)} placeholder={"/images/products/alder-wool-overcoat-1.jpg"} />
             </Field>
           </div>
 
@@ -531,6 +537,16 @@ function lines(s: string): string[] {
     .split("\n")
     .map((x) => x.trim())
     .filter(Boolean);
+}
+
+/** Parses "Name #hex" lines; lines without a valid hex are skipped. */
+function parseColours(s: string): Colour[] {
+  return lines(s).flatMap((line) => {
+    const match = line.match(/^(.*?)\s*(#[0-9a-f]{3}(?:[0-9a-f]{3})?)$/i);
+    if (!match) return [];
+    const [, name, hex] = match;
+    return [{ name: name || hex, hex }];
+  });
 }
 
 function slugify(s: string): string {

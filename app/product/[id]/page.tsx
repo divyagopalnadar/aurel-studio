@@ -50,7 +50,7 @@ export default async function ProductPage({
           <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-brand-soft">
             Continue exploring
           </p>
-          <h2 className="mt-1 text-2xl font-semibold tracking-tight text-white">
+          <h2 className="mt-1 font-serif text-3xl font-medium tracking-tight text-fg">
             You may also like
           </h2>
         </div>
@@ -61,7 +61,7 @@ export default async function ProductPage({
         </div>
       </section>
 
-      <p className="mt-10 text-right font-mono text-[12px] text-white/25">
+      <p className="mt-10 text-right font-mono text-[12px] text-faint">
         {formatPrice(product.price)} · SKU AUR-{String(product.id).padStart(3, "0")}
       </p>
     </div>

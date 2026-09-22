@@ -5,13 +5,13 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { useCart } from "@/context/CartContext";
 import { Button } from "./ui/Button";
-import { formatPrice } from "@/lib/utils";
+import { cn, formatPrice } from "@/lib/utils";
 import {
   ArrowRightIcon,
-  BoxIcon,
   CloseIcon,
   MinusIcon,
   PlusIcon,
+  ShoppingBagIcon,
   TrashIcon,
 } from "@/lib/icons";
 
@@ -52,7 +52,7 @@ export function CartDrawer() {
         <header className="flex items-center justify-between border-b border-edge px-5 py-4">
           <div className="flex items-center gap-2.5">
             <span className="grid size-8 place-items-center rounded-lg bg-brand/15 text-brand-soft">
-              <BoxIcon className="size-4.5" />
+              <ShoppingBagIcon className="size-4.5" />
             </span>
             <div className="leading-tight">
               <h2 className="text-[15px] font-semibold text-fg">Your bag</h2>
@@ -74,7 +74,7 @@ export function CartDrawer() {
         {lines.length === 0 ? (
           <div className="flex flex-1 flex-col items-center justify-center gap-4 px-8 text-center">
             <div className="grid size-16 place-items-center rounded-2xl bg-fg/[0.04] text-faint ring-1 ring-inset ring-edge">
-              <BoxIcon className="size-7" />
+              <ShoppingBagIcon className="size-7" />
             </div>
             <div>
               <p className="text-[15px] font-medium text-fg">Your bag is empty</p>
@@ -92,13 +92,13 @@ export function CartDrawer() {
             <div className="flex-1 space-y-2 overflow-y-auto px-5 py-4">
               {lines.map((line) => (
                 <div
-                  key={line.productId}
+                  key={line.key}
                   className="flex gap-3 rounded-xl border border-edge bg-fg/[0.02] p-3 transition-colors hover:bg-fg/[0.04]"
                 >
                   <Link
                     href={`/product/${line.productId}`}
                     onClick={closeCart}
-                    className="relative block size-16 shrink-0 overflow-hidden rounded-lg ring-1 ring-inset ring-edge"
+                    className="relative block aspect-[4/5] w-16 shrink-0 overflow-hidden rounded-lg ring-1 ring-inset ring-edge"
                   >
                     <Image
                       src={line.image}
@@ -119,18 +119,25 @@ export function CartDrawer() {
                       </Link>
                       <button
                         type="button"
-                        onClick={() => removeItem(line.productId)}
+                        onClick={() => removeItem(line.key)}
                         className="grid size-7 shrink-0 place-items-center rounded-md text-faint transition-colors hover:bg-rose-500/10 hover:text-rose-500 dark:hover:text-rose-300"
                         aria-label={`Remove ${line.name}`}
                       >
                         <TrashIcon className="size-4" />
                       </button>
                     </div>
+                    {(line.size || line.color) && (
+                      <p className="mt-0.5 text-[12px] text-faint">
+                        {[line.color, line.size && `Size ${line.size}`]
+                          .filter(Boolean)
+                          .join(" · ")}
+                      </p>
+                    )}
                     <div className="mt-auto flex items-center justify-between pt-2">
                       <div className="flex items-center rounded-lg ring-1 ring-inset ring-edge">
                         <button
                           type="button"
-                          onClick={() => setQuantity(line.productId, line.quantity - 1)}
+                          onClick={() => setQuantity(line.key, line.quantity - 1)}
                           className="grid size-8 place-items-center text-faint transition-colors hover:bg-fg/[0.05] hover:text-fg"
                           aria-label="Decrease quantity"
                         >
@@ -141,7 +148,7 @@ export function CartDrawer() {
                         </span>
                         <button
                           type="button"
-                          onClick={() => setQuantity(line.productId, line.quantity + 1)}
+                          onClick={() => setQuantity(line.key, line.quantity + 1)}
                           className="grid size-8 place-items-center text-faint transition-colors hover:bg-fg/[0.05] hover:text-fg"
                           aria-label="Increase quantity"
                         >
@@ -177,8 +184,4 @@ export function CartDrawer() {
       </aside>
     </>
   );
-}
-
-function cn(...parts: Array<string | false | null | undefined>) {
-  return parts.filter(Boolean).join(" ");
 }

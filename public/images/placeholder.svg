@@ -1,13 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" width="900" height="900">
-  <defs>
-    <radialGradient id="bg" cx="50%" cy="40%" r="85%">
-      <stop offset="0%" stop-color="#2a2d3a"/>
-      <stop offset="100%" stop-color="#0e0f14"/>
-    </radialGradient>
-  </defs>
-  <rect width="900" height="900" fill="url(#bg)"/>
-  <g fill="none" stroke="#ffffff" stroke-opacity="0.28" stroke-width="14" stroke-linejoin="round">
-    <path d="M450 330 L570 395 L570 525 L450 590 L330 525 L330 395 Z"/>
-    <path d="M330 395 L450 460 L570 395 M450 460 L450 590"/>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+  <rect width="800" height="1000" fill="#f3eee6"/>
+  <text x="400" y="500" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, 'Times New Roman', serif" font-size="72" font-weight="600" fill="#1f1d1a" fill-opacity="0.35">Aurél</text>
+  <text x="400" y="550" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" letter-spacing="4" fill="#1f1d1a" fill-opacity="0.35">IMAGE UNAVAILABLE</text>
 </svg>

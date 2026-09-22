@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f0eae0"/>
+      <stop offset="1" stop-color="#ede6db"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-200%" width="140%" height="500%">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+  </defs>
+  <rect width="800" height="1000" fill="url(#bg)"/>
+  <ellipse cx="400" cy="576" rx="200" ry="11" fill="#1f1d1a" opacity="0.1" filter="url(#soft)"/>
+  <g transform="translate(170 130) scale(2.3)">
+    <path d="M68 34 Q100 50 132 34 L166 50 Q176 54 178 66 L188 156 L162 160 L150 94 L152 170 L48 170 L50 94 L38 160 L12 156 L22 66 Q24 54 34 50 Z" fill="#d9cbb3" stroke="#736b5f" stroke-width="1.3" stroke-linejoin="round"/>
+    <path d="M68 34 Q100 60 132 34 M50 160 L150 160 M14 146 L38 150 M162 150 L186 146" fill="none" stroke="#736b5f" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+  </g>
+  <rect y="800" width="800" height="200" fill="#ede8e0" opacity="0.9"/>
+  <text x="400" y="862" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" letter-spacing="6" fill="#1f1d1a" fill-opacity="0.5">KNITWEAR</text>
+  <text x="400" y="912" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, 'Times New Roman', serif" font-size="40" font-weight="600" fill="#1f1d1a" fill-opacity="0.85">Isla Cashmere Crewneck</text>
+  <text x="400" y="952" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="3" fill="#1f1d1a" fill-opacity="0.38">PACKSHOT · PHOTO COMING SOON</text>
+</svg>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eae6df"/>
+      <stop offset="1" stop-color="#e5e1db"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-200%" width="140%" height="500%">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+  </defs>
+  <rect width="800" height="1000" fill="url(#bg)"/>
+  
+  <g transform="translate(40 40) scale(3.6)">
+    <path d="M56 122 a44 44 0 1 0 88 0 a44 44 0 1 0 -88 0" fill="none" stroke="#696866" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/><path d="M56 122 a44 44 0 1 0 88 0 a44 44 0 1 0 -88 0" fill="none" stroke="#c4c4c2" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M70 72 Q70 54 100 54 Q130 54 130 72 Q130 90 100 90 Q70 90 70 72 Z" fill="#c4c4c2" stroke="#696866" stroke-width="1.3" stroke-linejoin="round"/>
+  </g>
+  <rect y="800" width="800" height="200" fill="#ede8e0" opacity="0.9"/>
+  <text x="400" y="862" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" letter-spacing="6" fill="#1f1d1a" fill-opacity="0.5">JEWELRY</text>
+  <text x="400" y="912" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, 'Times New Roman', serif" font-size="40" font-weight="600" fill="#1f1d1a" fill-opacity="0.85">Sable Signet Ring</text>
+  <text x="400" y="952" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="3" fill="#1f1d1a" fill-opacity="0.38">DETAIL · PHOTO COMING SOON</text>
+</svg>

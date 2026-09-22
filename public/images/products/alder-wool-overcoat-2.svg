@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e7d9ca"/>
+      <stop offset="1" stop-color="#e1cfbc"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-200%" width="140%" height="500%">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+  </defs>
+  <rect width="800" height="1000" fill="url(#bg)"/>
+  
+  <g transform="translate(40 40) scale(3.6)">
+    <path d="M72 28 L100 42 L128 28 L160 44 Q170 48 172 60 L182 150 L162 153 L152 92 L154 186 L46 186 L48 92 L38 153 L18 150 L28 60 Q30 48 40 44 Z" fill="#b8875a" stroke="#644d37" stroke-width="1.3" stroke-linejoin="round"/>
+    <path d="M72 28 L88 92 L100 42 M128 28 L112 92 L100 42 M100 92 L100 186 M60 142 L80 142 M120 142 L140 142" fill="none" stroke="#644d37" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+    <circle cx="100" cy="112" r="2.4" fill="#644d37"/>
+    <circle cx="100" cy="136" r="2.4" fill="#644d37"/>
+    <circle cx="100" cy="160" r="2.4" fill="#644d37"/>
+  </g>
+  <rect y="800" width="800" height="200" fill="#ede8e0" opacity="0.9"/>
+  <text x="400" y="862" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" letter-spacing="6" fill="#1f1d1a" fill-opacity="0.5">OUTERWEAR</text>
+  <text x="400" y="912" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, 'Times New Roman', serif" font-size="40" font-weight="600" fill="#1f1d1a" fill-opacity="0.85">Alder Wool Overcoat</text>
+  <text x="400" y="952" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="3" fill="#1f1d1a" fill-opacity="0.38">DETAIL · PHOTO COMING SOON</text>
+</svg>

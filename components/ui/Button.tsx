@@ -12,7 +12,7 @@ type Size = "sm" | "md" | "lg" | "icon";
 
 const variantClass: Record<Variant, string> = {
   primary:
-    "bg-brand text-white shadow-glow hover:bg-brand-soft hover:shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_20px_60px_-16px_rgba(79,70,229,0.5)]",
+    "bg-brand text-white shadow-glow hover:bg-brand-hover",
   secondary:
     "bg-fg/[0.06] text-fg ring-1 ring-inset ring-edge hover:bg-fg/[0.11]",
   ghost: "text-fg/70 hover:text-fg hover:bg-fg/[0.05]",

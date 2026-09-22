@@ -1,106 +1,112 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getProductById, getProductBySlug } from "@/lib/data";
+import { heroImage } from "@/lib/images";
 import { Button } from "./ui/Button";
-import { Stars } from "./ui/Stars";
-import { Badge } from "./ui/Badge";
-import { discountPercent, formatPrice } from "@/lib/utils";
-import { ArrowRightIcon, SparkIcon } from "@/lib/icons";
+import { formatPrice } from "@/lib/utils";
+import { ArrowRightIcon } from "@/lib/icons";
+
+const HIGHLIGHTS = [
+  ["Natural", "fibres & leathers"],
+  ["Free", "repairs for life"],
+  ["30-day", "free returns"],
+];
 
 export async function Hero() {
   const featured =
-    (await getProductBySlug("orbit-4k-drone")) ?? (await getProductById(1));
-  if (!featured) return null;
-  const discount = discountPercent(featured.price, featured.compareAtPrice);
+    (await getProductBySlug("alder-wool-overcoat")) ?? (await getProductById(1));
 
   return (
     <section className="relative overflow-hidden">
-      <div className="grid-lines pointer-events-none absolute inset-0" />
-      <div className="pointer-events-none absolute -left-40 top-10 size-[520px] rounded-full bg-brand/20 blur-[140px]" />
-      <div className="pointer-events-none absolute -right-32 top-40 size-[420px] rounded-full bg-brand/15 blur-[130px]" />
-
-      <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 pb-16 pt-32 sm:px-6 lg:grid-cols-2 lg:gap-10 lg:px-8 lg:pb-24 lg:pt-40">
+      <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-4 pb-20 pt-28 sm:px-6 lg:grid-cols-[1.15fr_1fr] lg:gap-16 lg:px-8 lg:pb-24 lg:pt-32">
         <div className="animate-fade-up">
-          <div className="inline-flex items-center gap-2 rounded-full border border-edge bg-fg/[0.03] px-3.5 py-1.5 text-[12px] font-medium text-muted backdrop-blur">
-            <SparkIcon className="size-3.5 text-brand-soft" />
-            The 2026 collection just landed
-          </div>
+          <p className="text-[12px] font-semibold uppercase tracking-[0.22em] text-brand-soft">
+            Autumn / Winter 2026
+          </p>
 
-          <h1 className="text-gradient mt-6 text-balance text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-            Hardware that feels
-            <br className="hidden sm:block" /> as good as it{" "}
-            <span className="text-gradient-brand">performs</span>
+          <h1 className="mt-5 text-balance font-serif text-5xl font-medium leading-[1.02] tracking-tight text-fg sm:text-6xl lg:text-7xl">
+            Quiet pieces, made to be <em className="text-brand-soft">lived in</em>
           </h1>
 
           <p className="mt-6 max-w-md text-pretty text-[15px] leading-relaxed text-muted sm:text-base">
-            Engineered audio, wearables, and everyday electronics. Precise,
-            beautiful, and built to outlast your next upgrade.
+            Cashmere, waxed cotton, vegetable-tanned leather and recycled gold.
+            Fewer, better things in colours that work together, season after
+            season.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Button asChild size="lg">
-              <Link href="/#coleccion">
+              <Link href="/#collection">
                 Shop the collection
                 <ArrowRightIcon className="size-4" />
               </Link>
             </Button>
-            <Button asChild size="lg" variant="secondary">
-              <Link href={`/product/${featured.id}`}>Meet the Orbit 4K</Link>
-            </Button>
+            {featured && (
+              <Button asChild size="lg" variant="secondary">
+                <Link href={`/product/${featured.id}`}>Discover the {featured.name}</Link>
+              </Button>
+            )}
           </div>
 
-          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
-            {[
-              ["40,000+", "objects delivered"],
-              ["4.8 ★", "average rating"],
-              ["2-yr", "warranty included"],
-            ].map(([stat, label]) => (
+          <dl className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-4">
+            {HIGHLIGHTS.map(([stat, label]) => (
               <div key={label}>
-                <p className="text-xl font-semibold text-fg">{stat}</p>
-                <p className="text-[12px] text-faint">{label}</p>
+                <dt className="font-serif text-2xl font-medium text-fg">{stat}</dt>
+                <dd className="text-[12px] text-faint">{label}</dd>
               </div>
             ))}
-          </div>
+          </dl>
         </div>
 
-        {/* Featured product showcase */}
-        <div className="relative animate-fade-up lg:pl-6" style={{ animationDelay: "80ms" }}>
-          <Link
-            href={`/product/${featured.id}`}
-            className="group glass block overflow-hidden rounded-3xl border border-edge shadow-lift transition-all duration-300 hover:border-edge-strong"
-          >
-            <div className="relative aspect-[4/3.4] overflow-hidden">
-              <Image
-                src={featured.images[0]}
-                alt={featured.name}
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                loading="eager"
-                className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-              />
-              <div className="absolute left-4 top-4 flex flex-col gap-2">
-                <Badge tone="brand">Featured</Badge>
-                {discount > 0 && <Badge tone="rose">-{discount}%</Badge>}
-              </div>
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-bg/90 to-transparent p-5 pt-16">
-                <div className="flex items-center justify-between gap-4">
-                  <div>
-                    <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-faint">
-                      {featured.category}
-                    </p>
-                    <h3 className="mt-1 text-lg font-semibold text-fg">{featured.name}</h3>
-                    <p className="mt-0.5 text-[13px] text-muted">{featured.tagline}</p>
-                  </div>
-                  <div className="shrink-0 text-right">
-                    <Stars rating={featured.rating} className="justify-end" />
-                    <p className="mt-1.5 text-lg font-semibold text-fg">
-                      {formatPrice(featured.price)}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Link>
+        {/* Editorial image with the featured product */}
+        <div
+          className="relative mx-auto w-full max-w-[440px] animate-fade-up lg:mr-0"
+          style={{ animationDelay: "80ms" }}
+        >
+          <div className="relative aspect-[4/5] overflow-hidden rounded-[28px] border border-edge bg-panel shadow-lift">
+            <Image
+              src={heroImage()}
+              alt="Aurél Studio autumn and winter collection"
+              fill
+              sizes="(max-width: 1024px) 90vw, 440px"
+              loading="eager"
+              className="object-cover"
+            />
+          </div>
+
+          {featured && (
+            <Link
+              href={`/product/${featured.id}`}
+              className="group glass-strong absolute -bottom-7 left-4 right-4 flex items-center gap-4 rounded-2xl border border-edge p-3 pr-5 shadow-lift transition-colors hover:border-edge-strong sm:-left-12 sm:right-auto sm:w-[340px]"
+            >
+              <span className="relative aspect-[4/5] w-14 shrink-0 overflow-hidden rounded-lg bg-panel">
+                <Image
+                  src={featured.images[0]}
+                  alt=""
+                  fill
+                  sizes="56px"
+                  className="object-cover"
+                />
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="block text-[11px] font-semibold uppercase tracking-[0.14em] text-faint">
+                  Featured · {featured.category}
+                </span>
+                <span className="mt-0.5 block truncate font-serif text-lg font-semibold text-fg">
+                  {featured.name}
+                </span>
+                <span className="mt-0.5 flex items-baseline gap-2 text-sm">
+                  <span className="font-medium text-fg">{formatPrice(featured.price)}</span>
+                  {featured.compareAtPrice && (
+                    <span className="text-[12px] text-faint line-through">
+                      {formatPrice(featured.compareAtPrice)}
+                    </span>
+                  )}
+                </span>
+              </span>
+              <ArrowRightIcon className="size-4 shrink-0 text-faint transition-transform group-hover:translate-x-0.5 group-hover:text-fg" />
+            </Link>
+          )}
         </div>
       </div>
     </section>

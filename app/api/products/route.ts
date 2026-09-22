@@ -2,13 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/db";
 import { mapProduct, getProducts } from "@/lib/data";
-import { glyphTheme } from "@/data/products";
-
-const parseJsonArray = (v: unknown): string[] | null => {
-  if (!Array.isArray(v)) return null;
-  if (v.some((x) => typeof x !== "string")) return null;
-  return v;
-};
+import { parseColourArray, parseStringArray } from "@/lib/product-input";
 
 export async function GET(req: NextRequest) {
   const idParam = req.nextUrl.searchParams.get("id");
@@ -47,10 +41,11 @@ export async function POST(req: NextRequest) {
     featured,
     isNew,
     features,
+    material,
+    care,
+    sizes,
     colors,
     images,
-    hue,
-    glyph,
   } = body;
 
   if (
@@ -65,13 +60,12 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const featuresArr = parseJsonArray(features) ?? [];
-  const colorsArr = parseJsonArray(colors) ?? ["#e7e7ec"];
-  const imagesArr = parseJsonArray(images) ?? [];
+  const featuresArr = parseStringArray(features) ?? [];
+  const sizesArr = parseStringArray(sizes) ?? ["One size"];
+  const colorsArr = parseColourArray(colors) ?? [];
+  const imagesArr = parseStringArray(images) ?? [];
   const stockValue =
     stock === "low_stock" || stock === "sold_out" ? stock : "in_stock";
-  const glyphValue =
-    typeof glyph === "string" && glyph in glyphTheme ? glyph : "box";
 
   try {
     const created = await prisma.product.create({
@@ -91,15 +85,17 @@ export async function POST(req: NextRequest) {
         featured: featured === true,
         isNew: isNew === true,
         features: JSON.stringify(featuresArr),
+        material: typeof material === "string" ? material : "",
+        care: typeof care === "string" ? care : "",
+        sizes: JSON.stringify(sizesArr),
         colors: JSON.stringify(colorsArr),
         images: JSON.stringify(imagesArr),
-        hue: typeof hue === "number" ? hue : 220,
-        glyph: glyphValue,
       },
+      include: { reviews: true },
     });
     // Storefront pages are prerendered; refresh them so the change shows up.
     revalidatePath("/", "layout");
-    return NextResponse.json(created, { status: 201 });
+    return NextResponse.json(mapProduct(created), { status: 201 });
   } catch (e) {
     if (e instanceof Error && "code" in e && (e as { code: string }).code === "P2002") {
       return NextResponse.json(

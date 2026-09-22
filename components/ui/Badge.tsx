@@ -1,14 +1,17 @@
 import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
 
-type Tone = "brand" | "green" | "amber" | "neutral" | "rose";
+type Tone = "brand" | "green" | "amber" | "neutral" | "sale" | "overlay" | "saleOverlay";
 
 const tones: Record<Tone, string> = {
   brand: "bg-brand/15 text-brand-soft ring-brand/30",
   green: "bg-emerald-500/10 text-emerald-600 ring-emerald-500/25 dark:bg-emerald-400/10 dark:text-emerald-300 dark:ring-emerald-400/25",
   amber: "bg-amber-500/10 text-amber-600 ring-amber-500/25 dark:bg-amber-400/10 dark:text-amber-300 dark:ring-amber-400/25",
   neutral: "bg-fg/[0.06] text-fg/70 ring-edge",
-  rose: "bg-rose-500/10 text-rose-600 ring-rose-500/25 dark:bg-rose-400/10 dark:text-rose-300 dark:ring-rose-400/25",
+  sale: "bg-sale/10 text-sale ring-sale/25",
+  // Solid variants for badges placed on top of product imagery.
+  overlay: "bg-surface/90 text-fg ring-edge",
+  saleOverlay: "bg-sale text-surface ring-transparent",
 };
 
 export function Badge({

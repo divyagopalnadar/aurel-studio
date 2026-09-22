@@ -1,4 +1,4 @@
-// Prisma schema — Aurél Studio product catalog
+// Prisma schema — Aurél Studio clothing & accessories catalog
 // Local SQLite via "file:" URL. See .env / .env.example for DATABASE_URL.
 
 generator client {
@@ -32,10 +32,11 @@ model Product {
   featured       Boolean    @default(false)
   isNew          Boolean    @default(false)
   features       String // JSON array of strings
-  colors         String // JSON array of hex strings
+  material       String     @default("")
+  care           String     @default("")
+  sizes          String     @default("[]") // JSON array of size labels
+  colors         String // JSON array of { name, hex }
   images         String // JSON array of image paths
-  hue            Int        @default(0)
-  glyph          String
   createdAt      DateTime   @default(now())
   updatedAt      DateTime   @updatedAt
 

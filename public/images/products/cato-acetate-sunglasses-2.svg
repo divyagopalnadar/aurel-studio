@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d8cdc1"/>
+      <stop offset="1" stop-color="#cabdaf"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-200%" width="140%" height="500%">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+  </defs>
+  <rect width="800" height="1000" fill="url(#bg)"/>
+  
+  <g transform="translate(40 40) scale(3.6)">
+    <path d="M26 82 Q26 72 36 72 L80 72 Q92 72 92 84 L90 108 Q88 128 64 128 L50 128 Q28 128 26 108 Z" fill="#6b4a2e" stroke="#413123" stroke-width="1.3" stroke-linejoin="round"/>
+    <path d="M108 84 Q108 72 120 72 L164 72 Q174 72 174 82 L174 108 Q172 128 150 128 L136 128 Q112 128 110 108 Z" fill="#6b4a2e" stroke="#413123" stroke-width="1.3" stroke-linejoin="round"/>
+    <path d="M92 84 Q100 76 108 84 M26 80 L10 76 M174 80 L190 76" fill="none" stroke="#413123" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+  </g>
+  <rect y="800" width="800" height="200" fill="#ede8e0" opacity="0.9"/>
+  <text x="400" y="862" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" letter-spacing="6" fill="#1f1d1a" fill-opacity="0.5">ACCESSORIES</text>
+  <text x="400" y="912" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, 'Times New Roman', serif" font-size="40" font-weight="600" fill="#1f1d1a" fill-opacity="0.85">Cato Acetate Sunglasses</text>
+  <text x="400" y="952" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="3" fill="#1f1d1a" fill-opacity="0.38">DETAIL · PHOTO COMING SOON</text>
+</svg>
