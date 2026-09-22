@@ -11,7 +11,8 @@
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
     "db:seed": "prisma db seed",
-    "images:placeholders": "tsx scripts/generate-placeholders.ts"
+    "images:placeholders": "tsx scripts/generate-placeholders.ts",
+    "images:import": "node scripts/import-images.mjs"
   },
   "dependencies": {
     "@prisma/client": "^6.19.0",
@@ -27,6 +28,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.3.5",
     "prisma": "^6.19.0",
+    "sharp": "^0.35.4",
     "tailwindcss": "^4",
     "tsx": "^4.23.13",
     "typescript": "^5"

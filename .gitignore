@@ -44,3 +44,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# product photos waiting to be imported (npm run images:import)
+/incoming-images/
