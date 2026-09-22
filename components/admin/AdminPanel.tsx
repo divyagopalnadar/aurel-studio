@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Stars } from "@/components/ui/Stars";
 import { Button } from "@/components/ui/Button";
 import { formatPrice } from "@/lib/utils";
+import { adminStore, type ProductInput } from "@/lib/admin-store";
 import {
   BoxIcon,
   CheckIcon,
@@ -109,20 +110,42 @@ export function AdminPanel({ initial }: { initial: Product[] }) {
     return () => clearTimeout(t);
   }, [toast]);
 
+  const isBrowserStore = adminStore.kind === "browser";
+  // Products with a published page (the static export only has these).
+  const published = useMemo(() => new Set(initial.map((p) => p.id)), [initial]);
+
   const refresh = useCallback(async () => {
-    const res = await fetch("/api/products");
-    if (res.ok) setProducts((await res.json()) as Product[]);
-  }, []);
+    setProducts(await adminStore.load(initial));
+  }, [initial]);
+
+  // Static build: pick up edits previously saved in this browser.
+  useEffect(() => {
+    if (!isBrowserStore) return;
+    let active = true;
+    adminStore.load(initial).then((list) => {
+      if (active) setProducts(list);
+    });
+    return () => {
+      active = false;
+    };
+  }, [initial, isBrowserStore]);
 
   const handleDelete = async (id: number, name: string) => {
     if (!window.confirm(`Delete "${name}"? This cannot be undone.`)) return;
-    const res = await fetch(`/api/products/${id}`, { method: "DELETE" });
-    if (res.ok) {
+    const result = await adminStore.remove(id);
+    if (result.ok) {
       setProducts((prev) => prev.filter((p) => p.id !== id));
       flash("Product deleted");
     } else {
-      setError("Could not delete product");
+      setError(result.error);
     }
+  };
+
+  const handleReset = () => {
+    if (!window.confirm("Discard all changes made in this browser?")) return;
+    adminStore.reset();
+    setProducts(initial);
+    flash("Catalog reset");
   };
 
   return (
@@ -137,14 +160,30 @@ export function AdminPanel({ initial }: { initial: Product[] }) {
             Products
           </h1>
           <p className="mt-1 text-sm text-muted">
-            {products.length} in the catalog · stored in local SQLite via Prisma
+            {products.length} in the catalog ·{" "}
+            {isBrowserStore ? "saved in this browser" : "stored in local SQLite via Prisma"}
           </p>
         </div>
-        <Button onClick={() => setEditor({ mode: "create" })}>
-          <PlusCircleIcon className="size-4" />
-          New product
-        </Button>
+        <div className="flex items-center gap-2">
+          {isBrowserStore && (
+            <Button variant="ghost" onClick={handleReset}>
+              Reset
+            </Button>
+          )}
+          <Button onClick={() => setEditor({ mode: "create" })}>
+            <PlusCircleIcon className="size-4" />
+            New product
+          </Button>
+        </div>
       </div>
+
+      {isBrowserStore && (
+        <p className="mt-4 rounded-xl border border-edge bg-fg/[0.03] px-4 py-3 text-sm text-muted">
+          <span className="font-medium text-fg">Live demo:</span> changes are saved in this
+          browser only (localStorage). The published storefront is static and
+          isn&apos;t affected. Use Reset to restore the original catalog.
+        </p>
+      )}
 
       {error && (
         <div className="mt-4 flex items-center justify-between rounded-xl border border-rose-500/30 bg-rose-500/10 px-4 py-3 text-sm text-rose-600 dark:text-rose-300">
@@ -172,19 +211,23 @@ export function AdminPanel({ initial }: { initial: Product[] }) {
               key={p.id}
               className="grid grid-cols-[52px_1fr_auto] items-center gap-3 px-4 py-3 transition-colors hover:bg-fg/[0.02] sm:grid-cols-[64px_1fr_1fr_88px_88px_132px] sm:gap-4 lg:grid-cols-[64px_2fr_1fr_110px_110px_120px_132px]"
             >
-              <Link href={`/product/${p.id}`} className="relative block aspect-[4/5] w-12 overflow-hidden rounded-lg bg-panel ring-1 ring-inset ring-edge">
+              <span className="relative block aspect-[4/5] w-12 overflow-hidden rounded-lg bg-panel ring-1 ring-inset ring-edge">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={p.images[0]} alt="" className="size-full object-cover" />
-              </Link>
+              </span>
 
               <div className="min-w-0">
                 <div className="flex items-center gap-2">
-                  <Link
-                    href={`/product/${p.id}`}
-                    className="truncate text-sm font-medium text-fg hover:text-brand-soft"
-                  >
-                    {p.name}
-                  </Link>
+                  {published.has(p.id) || !isBrowserStore ? (
+                    <Link
+                      href={`/product/${p.id}`}
+                      className="truncate text-sm font-medium text-fg hover:text-brand-soft"
+                    >
+                      {p.name}
+                    </Link>
+                  ) : (
+                    <span className="truncate text-sm font-medium text-fg">{p.name}</span>
+                  )}
                   {p.isNew && <Badge tone="brand" className="hidden md:inline-flex">New</Badge>}
                 </div>
                 <div className="mt-0.5 flex items-center gap-2 sm:hidden">
@@ -200,13 +243,16 @@ export function AdminPanel({ initial }: { initial: Product[] }) {
               </span>
 
               <div className="flex items-center justify-end gap-1">
-                <a
-                  href={`/product/${p.id}`}
-                  className="hidden size-8 place-items-center rounded-lg text-faint transition-colors hover:bg-fg/[0.05] hover:text-fg md:grid"
-                  title="View"
-                >
-                  <BoxIcon className="size-4" />
-                </a>
+                {(published.has(p.id) || !isBrowserStore) && (
+                  <Link
+                    href={`/product/${p.id}`}
+                    className="hidden size-8 place-items-center rounded-lg text-faint transition-colors hover:bg-fg/[0.05] hover:text-fg md:grid"
+                    title="View product page"
+                    aria-label={`View ${p.name}`}
+                  >
+                    <BoxIcon className="size-4" />
+                  </Link>
+                )}
                 <button
                   type="button"
                   onClick={() => setEditor({ mode: "edit", product: p })}
@@ -318,7 +364,7 @@ function EditorModal({
       setSaving(false);
       return;
     }
-    const payload = {
+    const payload: ProductInput = {
       name: form.name,
       slug: form.slug || slugify(form.name),
       tagline: form.tagline,
@@ -340,17 +386,10 @@ function EditorModal({
       images: lines(form.images),
     };
 
-    const url = isEdit ? `/api/products/${editor.product.id}` : "/api/products";
-    const method = isEdit ? "PATCH" : "POST";
-    const res = await fetch(url, {
-      method,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
+    const result = await adminStore.save(payload, isEdit ? editor.product.id : undefined);
     setSaving(false);
-    if (!res.ok) {
-      const data = await res.json().catch(() => null);
-      setError((data && data.error) || "Something went wrong.");
+    if (!result.ok) {
+      setError(result.error);
       return;
     }
     await onSaved();

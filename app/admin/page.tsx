@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { connection } from "next/server";
 import { getProducts } from "@/lib/data";
+import { IS_STATIC } from "@/lib/config";
 import { AdminPanel } from "@/components/admin/AdminPanel";
 import { ArrowLeftIcon } from "@/lib/icons";
 
@@ -9,9 +11,11 @@ export const metadata: Metadata = {
   description: "Manage the Aurél Studio product catalog.",
 };
 
-export const dynamic = "force-dynamic";
-
 export default async function AdminPage() {
+  // Database build: render on every request so the list reflects the latest
+  // writes. Static build: prerender with the catalog document; the panel then
+  // loads any browser-local edits on the client.
+  if (!IS_STATIC) await connection();
   const products = await getProducts();
 
   return (

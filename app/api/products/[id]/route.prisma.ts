@@ -1,8 +1,16 @@
+/**
+ * Database build only (NEXT_PUBLIC_DATA_SOURCE=prisma).
+ *
+ * The ".prisma.ts" extension is deliberate: next.config.ts adds "prisma.ts" to
+ * `pageExtensions` only for the database build, so Next treats this file as
+ * the route handler there and ignores it in the static GitHub Pages export,
+ * which cannot contain request-dependent route handlers.
+ */
 import { NextResponse, type NextRequest } from "next/server";
 import { revalidatePath } from "next/cache";
 import { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/db";
-import { mapProduct } from "@/lib/data";
+import { mapProduct } from "@/lib/catalog/prisma";
 import { parseColourArray, parseStringArray } from "@/lib/product-input";
 
 type Ctx = { params: Promise<{ id: string }> };

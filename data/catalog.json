@@ -1,0 +1,977 @@
+{
+  "version": 1,
+  "products": [
+    {
+      "id": 1,
+      "slug": "alder-wool-overcoat",
+      "name": "Alder Wool Overcoat",
+      "tagline": "Double-faced wool and cashmere, cut long",
+      "description": "An unlined overcoat in double-faced Italian wool with a touch of cashmere, finished by hand so the seams sit flat and clean. Relaxed through the shoulder and cut below the knee, it layers easily over tailoring or knitwear.",
+      "price": 495,
+      "compareAtPrice": 595,
+      "category": "Outerwear",
+      "rating": 4.9,
+      "reviewCount": 212,
+      "stock": "in_stock",
+      "stockCount": 24,
+      "featured": true,
+      "isNew": true,
+      "features": [
+        "Unlined, hand-finished double-faced construction",
+        "Dropped shoulder with a relaxed, straight fit",
+        "Concealed horn button placket",
+        "Two deep welt pockets"
+      ],
+      "material": "90% wool, 10% cashmere. Woven in Biella, Italy.",
+      "care": "Dry clean only. Brush after wear and hang on a shaped hanger.",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        {
+          "name": "Camel",
+          "hex": "#b8875a"
+        },
+        {
+          "name": "Charcoal",
+          "hex": "#3b3a38"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r1",
+          "author": "Hannah W.",
+          "rating": 5,
+          "date": "2026-02-14",
+          "title": "The coat I'll keep for a decade",
+          "body": "Heavy enough for proper cold, light enough to wear all day. The fabric has a lovely soft hand and the cut is perfect over a chunky knit."
+        },
+        {
+          "id": "r2",
+          "author": "Daniel O.",
+          "rating": 5,
+          "date": "2026-01-22",
+          "title": "Beautifully made",
+          "body": "Every seam is clean inside, which matters on an unlined coat. I sized down one and it fits exactly as I wanted."
+        }
+      ],
+      "images": [
+        "/images/products/alder-wool-overcoat-1.jpg",
+        "/images/products/alder-wool-overcoat-2.jpg"
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "hale-waxed-field-jacket",
+      "name": "Hale Waxed Field Jacket",
+      "tagline": "Waxed cotton that ages with you",
+      "description": "A four-pocket field jacket in British waxed cotton that shrugs off drizzle and softens into its own shape over time. Lined in brushed cotton twill with a cord collar for colder mornings.",
+      "price": 345,
+      "category": "Outerwear",
+      "rating": 4.7,
+      "reviewCount": 138,
+      "stock": "in_stock",
+      "stockCount": 31,
+      "featured": false,
+      "isNew": false,
+      "features": [
+        "Water-resistant waxed cotton shell",
+        "Corduroy-trimmed collar",
+        "Four bellows pockets with snap closures",
+        "Two-way brass zip"
+      ],
+      "material": "Shell: 100% waxed cotton. Lining: 100% cotton twill.",
+      "care": "Do not wash. Wipe clean with a damp cloth and re-wax once a year.",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        {
+          "name": "Olive",
+          "hex": "#5a5e3e"
+        },
+        {
+          "name": "Navy",
+          "hex": "#2b3346"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r3",
+          "author": "Marcus L.",
+          "rating": 5,
+          "date": "2026-03-03",
+          "title": "Proper outerwear",
+          "body": "Survived a wet week in the Highlands without complaint. Already starting to crease in all the right places."
+        },
+        {
+          "id": "r4",
+          "author": "Priya S.",
+          "rating": 4,
+          "date": "2026-02-10",
+          "title": "Great jacket, stiff at first",
+          "body": "It takes a couple of weeks of wear to soften, but that's the point of wax. Runs slightly large."
+        }
+      ],
+      "images": [
+        "/images/products/hale-waxed-field-jacket-1.jpg",
+        "/images/products/hale-waxed-field-jacket-2.jpg"
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "soren-quilted-liner-jacket",
+      "name": "Soren Quilted Liner Jacket",
+      "tagline": "A light layer for in-between days",
+      "description": "A collarless jacket quilted in a fine diamond pattern and filled with recycled insulation. Wear it alone on cool days or under a coat when the temperature drops.",
+      "price": 265,
+      "category": "Outerwear",
+      "rating": 4.6,
+      "reviewCount": 94,
+      "stock": "low_stock",
+      "stockCount": 5,
+      "featured": false,
+      "isNew": true,
+      "features": [
+        "Fine diamond quilting",
+        "Recycled polyester insulation",
+        "Snap-front closure with two patch pockets",
+        "Packs down small for travel"
+      ],
+      "material": "Shell: 100% recycled nylon. Fill: 100% recycled polyester.",
+      "care": "Machine wash cold on a gentle cycle. Tumble dry low.",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        {
+          "name": "Sand",
+          "hex": "#cdb994"
+        },
+        {
+          "name": "Black",
+          "hex": "#1f1e1c"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r5",
+          "author": "Elena R.",
+          "rating": 5,
+          "date": "2026-03-18",
+          "title": "Wear it constantly",
+          "body": "Perfect spring layer and it fits under my wool coat without bulk."
+        }
+      ],
+      "images": [
+        "/images/products/soren-quilted-liner-jacket-1.jpg",
+        "/images/products/soren-quilted-liner-jacket-2.jpg"
+      ]
+    },
+    {
+      "id": 4,
+      "slug": "isla-cashmere-crewneck",
+      "name": "Isla Cashmere Crewneck",
+      "tagline": "Grade-A Mongolian cashmere",
+      "description": "A classic crewneck knitted from long-fibre Mongolian cashmere, so it stays soft and resists pilling. Finished with fully fashioned shoulders and ribbed trims that hold their shape.",
+      "price": 285,
+      "category": "Knitwear",
+      "rating": 4.9,
+      "reviewCount": 486,
+      "stock": "in_stock",
+      "stockCount": 58,
+      "featured": true,
+      "isNew": false,
+      "features": [
+        "Two-ply, 12-gauge knit",
+        "Fully fashioned shoulders",
+        "Relaxed fit that sits at the hip",
+        "Ribbed collar, cuffs and hem"
+      ],
+      "material": "100% Grade-A Mongolian cashmere.",
+      "care": "Hand wash cold with wool detergent and dry flat, or dry clean.",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        {
+          "name": "Oatmeal",
+          "hex": "#d9cbb3"
+        },
+        {
+          "name": "Charcoal",
+          "hex": "#3b3a38"
+        },
+        {
+          "name": "Ivory",
+          "hex": "#efe9df"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r6",
+          "author": "Sophie T.",
+          "rating": 5,
+          "date": "2026-01-09",
+          "title": "Softest thing I own",
+          "body": "Thicker than most cashmere at this price and it hasn't pilled after a whole winter."
+        },
+        {
+          "id": "r7",
+          "author": "James K.",
+          "rating": 5,
+          "date": "2025-12-02",
+          "title": "Bought a second colour",
+          "body": "The oatmeal goes with everything. True to size with a relaxed fit."
+        }
+      ],
+      "images": [
+        "/images/products/isla-cashmere-crewneck-1.jpg",
+        "/images/products/isla-cashmere-crewneck-2.jpg"
+      ]
+    },
+    {
+      "id": 5,
+      "slug": "fen-merino-cardigan",
+      "name": "Fen Merino Cardigan",
+      "tagline": "Fine merino, easy to layer",
+      "description": "A lightweight V-neck cardigan in extra-fine merino that is warm without bulk. Corozo nut buttons and a slim rib finish keep it looking sharp over a shirt or tee.",
+      "price": 210,
+      "category": "Knitwear",
+      "rating": 4.7,
+      "reviewCount": 173,
+      "stock": "in_stock",
+      "stockCount": 40,
+      "featured": false,
+      "isNew": false,
+      "features": [
+        "Extra-fine 18.5-micron merino",
+        "Corozo nut buttons",
+        "Slim, regular fit",
+        "Temperature-regulating and odour-resistant"
+      ],
+      "material": "100% extra-fine merino wool, RWS certified.",
+      "care": "Machine wash on a wool cycle at 30°C. Dry flat.",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        {
+          "name": "Sage",
+          "hex": "#a3ac8f"
+        },
+        {
+          "name": "Navy",
+          "hex": "#2b3346"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r8",
+          "author": "Clara M.",
+          "rating": 5,
+          "date": "2026-02-27",
+          "title": "Office staple",
+          "body": "Light enough for heated rooms and smart enough for meetings."
+        }
+      ],
+      "images": [
+        "/images/products/fen-merino-cardigan-1.jpg",
+        "/images/products/fen-merino-cardigan-2.jpg"
+      ]
+    },
+    {
+      "id": 6,
+      "slug": "moor-fisherman-rollneck",
+      "name": "Moor Fisherman Rollneck",
+      "tagline": "Hand-framed Aran cable knit",
+      "description": "A heavyweight rollneck in undyed British wool, knitted on hand frames in a traditional Aran cable. Warm, a little rugged and built to be passed down.",
+      "price": 240,
+      "category": "Knitwear",
+      "rating": 4.8,
+      "reviewCount": 121,
+      "stock": "sold_out",
+      "stockCount": 0,
+      "featured": false,
+      "isNew": false,
+      "features": [
+        "Traditional Aran cable pattern",
+        "Hand-framed in Scotland",
+        "Generous rollneck",
+        "Undyed, naturally water-repellent yarn"
+      ],
+      "material": "100% British wool, undyed.",
+      "care": "Hand wash cold and dry flat. Air between wears.",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        {
+          "name": "Ecru",
+          "hex": "#e6ddca"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r9",
+          "author": "Tom B.",
+          "rating": 5,
+          "date": "2025-11-30",
+          "title": "Like a wearable blanket",
+          "body": "Scratchy for the first week, then perfect. Unbelievably warm on the coast."
+        }
+      ],
+      "images": [
+        "/images/products/moor-fisherman-rollneck-1.jpg",
+        "/images/products/moor-fisherman-rollneck-2.jpg"
+      ]
+    },
+    {
+      "id": 7,
+      "slug": "ellis-oxford-shirt",
+      "name": "Ellis Oxford Shirt",
+      "tagline": "Heavy Oxford cloth, soft button-down collar",
+      "description": "Our take on the classic button-down, in a heavy Japanese Oxford cloth that softens with every wash. The collar has a gentle roll, and the back has a box pleat.",
+      "price": 125,
+      "category": "Shirts & Tops",
+      "rating": 4.8,
+      "reviewCount": 342,
+      "stock": "in_stock",
+      "stockCount": 76,
+      "featured": true,
+      "isNew": false,
+      "features": [
+        "Unlined button-down collar",
+        "Mother-of-pearl buttons",
+        "Box pleat and locker loop",
+        "Regular fit with a curved hem"
+      ],
+      "material": "100% cotton Oxford cloth, woven in Japan.",
+      "care": "Machine wash at 30°C. Line dry and iron while slightly damp.",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        {
+          "name": "White",
+          "hex": "#f4f2ec"
+        },
+        {
+          "name": "Sky",
+          "hex": "#b9c7d4"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r10",
+          "author": "Oliver P.",
+          "rating": 5,
+          "date": "2026-03-01",
+          "title": "Collar is spot on",
+          "body": "The roll on the collar is exactly right. Gets better every wash."
+        },
+        {
+          "id": "r11",
+          "author": "Aisha N.",
+          "rating": 4,
+          "date": "2026-02-15",
+          "title": "Great shirt",
+          "body": "Lovely heavy cloth. Sleeves run a touch long for me."
+        }
+      ],
+      "images": [
+        "/images/products/ellis-oxford-shirt-1.jpg",
+        "/images/products/ellis-oxford-shirt-2.jpg"
+      ]
+    },
+    {
+      "id": 8,
+      "slug": "marlow-linen-overshirt",
+      "name": "Marlow Linen Overshirt",
+      "tagline": "Garment-dyed European flax",
+      "description": "A boxy overshirt in heavyweight linen, garment-dyed for a soft, lived-in colour. Wear it open over a tee or buttoned up as a light jacket.",
+      "price": 145,
+      "category": "Shirts & Tops",
+      "rating": 4.6,
+      "reviewCount": 88,
+      "stock": "in_stock",
+      "stockCount": 35,
+      "featured": false,
+      "isNew": true,
+      "features": [
+        "Heavyweight 280 gsm linen",
+        "Garment-dyed for a lived-in colour",
+        "Two chest patch pockets",
+        "Boxy, slightly cropped fit"
+      ],
+      "material": "100% European flax linen.",
+      "care": "Machine wash at 30°C. Creases are part of the character.",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        {
+          "name": "Stone",
+          "hex": "#bfb6a6"
+        },
+        {
+          "name": "Olive",
+          "hex": "#5a5e3e"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r12",
+          "author": "Luca F.",
+          "rating": 5,
+          "date": "2026-04-11",
+          "title": "Summer jacket sorted",
+          "body": "Great weight and the colour is lovely in person."
+        }
+      ],
+      "images": [
+        "/images/products/marlow-linen-overshirt-1.jpg",
+        "/images/products/marlow-linen-overshirt-2.jpg"
+      ]
+    },
+    {
+      "id": 9,
+      "slug": "aro-pima-cotton-tee",
+      "name": "Aro Pima Cotton Tee",
+      "tagline": "The everyday tee, perfected",
+      "description": "A mid-weight tee in long-staple Peruvian Pima cotton with a clean, close-fitting collar that won't bacon. Cut straight with a slightly dropped shoulder.",
+      "price": 58,
+      "category": "Shirts & Tops",
+      "rating": 4.7,
+      "reviewCount": 627,
+      "stock": "in_stock",
+      "stockCount": 140,
+      "featured": false,
+      "isNew": false,
+      "features": [
+        "Long-staple Peruvian Pima cotton",
+        "Taped neck seam that holds its shape",
+        "Pre-shrunk",
+        "Straight fit with a slightly dropped shoulder"
+      ],
+      "material": "100% Pima cotton jersey, 180 gsm.",
+      "care": "Machine wash cold. Tumble dry low or line dry.",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        {
+          "name": "White",
+          "hex": "#f4f2ec"
+        },
+        {
+          "name": "Black",
+          "hex": "#1f1e1c"
+        },
+        {
+          "name": "Oatmeal",
+          "hex": "#d9cbb3"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r13",
+          "author": "Nina G.",
+          "rating": 5,
+          "date": "2026-03-22",
+          "title": "Finally, a tee that lasts",
+          "body": "Still looks new after months of washing. Bought three more."
+        }
+      ],
+      "images": [
+        "/images/products/aro-pima-cotton-tee-1.jpg",
+        "/images/products/aro-pima-cotton-tee-2.jpg"
+      ]
+    },
+    {
+      "id": 10,
+      "slug": "vela-leather-tote",
+      "name": "Vela Leather Tote",
+      "tagline": "Vegetable-tanned, fits a 16\" laptop",
+      "description": "A structured tote in full-grain vegetable-tanned leather that develops a rich patina with use. It has an unlined suede interior, a zip pocket and enough room for a laptop and a day's essentials.",
+      "price": 425,
+      "category": "Bags",
+      "rating": 4.8,
+      "reviewCount": 156,
+      "stock": "in_stock",
+      "stockCount": 18,
+      "featured": true,
+      "isNew": false,
+      "features": [
+        "Full-grain vegetable-tanned leather",
+        "Fits a 16-inch laptop",
+        "Interior zip pocket",
+        "Hand-painted edges"
+      ],
+      "material": "Full-grain leather, tanned in Tuscany.",
+      "care": "Condition every few months. Keep away from prolonged rain.",
+      "sizes": [
+        "One size"
+      ],
+      "colors": [
+        {
+          "name": "Cognac",
+          "hex": "#8a4f2b"
+        },
+        {
+          "name": "Black",
+          "hex": "#1f1e1c"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r14",
+          "author": "Grace H.",
+          "rating": 5,
+          "date": "2026-01-30",
+          "title": "Worth the investment",
+          "body": "Holds my laptop, notebook and lunch with room to spare. The leather is gorgeous."
+        }
+      ],
+      "images": [
+        "/images/products/vela-leather-tote-1.jpg",
+        "/images/products/vela-leather-tote-2.jpg"
+      ]
+    },
+    {
+      "id": 11,
+      "slug": "nell-crossbody-bag",
+      "name": "Nell Crossbody Bag",
+      "tagline": "Compact, hands-free, everyday",
+      "description": "A small crossbody in pebbled calf leather with an adjustable strap and a magnetic flap. It holds a phone, cards and keys without bulk.",
+      "price": 295,
+      "compareAtPrice": 345,
+      "category": "Bags",
+      "rating": 4.7,
+      "reviewCount": 203,
+      "stock": "in_stock",
+      "stockCount": 27,
+      "featured": false,
+      "isNew": true,
+      "features": [
+        "Pebbled calf leather",
+        "Adjustable, detachable strap",
+        "Magnetic flap closure",
+        "Three interior card slots"
+      ],
+      "material": "Pebbled calf leather with a cotton canvas lining.",
+      "care": "Wipe with a soft dry cloth. Store stuffed in its dust bag.",
+      "sizes": [
+        "One size"
+      ],
+      "colors": [
+        {
+          "name": "Oxblood",
+          "hex": "#5e2226"
+        },
+        {
+          "name": "Sand",
+          "hex": "#cdb994"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r15",
+          "author": "Mei L.",
+          "rating": 5,
+          "date": "2026-04-02",
+          "title": "Perfect size",
+          "body": "Fits everything I need for an evening out. The oxblood colour is beautiful."
+        }
+      ],
+      "images": [
+        "/images/products/nell-crossbody-bag-1.jpg",
+        "/images/products/nell-crossbody-bag-2.jpg"
+      ]
+    },
+    {
+      "id": 12,
+      "slug": "rowan-canvas-weekender",
+      "name": "Rowan Canvas Weekender",
+      "tagline": "Waxed canvas and bridle leather",
+      "description": "A roomy weekender in waxed cotton canvas with bridle leather handles and trim. It is sized to fit under a plane seat and has a padded shoe compartment.",
+      "price": 545,
+      "category": "Bags",
+      "rating": 4.9,
+      "reviewCount": 67,
+      "stock": "low_stock",
+      "stockCount": 3,
+      "featured": false,
+      "isNew": false,
+      "features": [
+        "Water-resistant waxed canvas",
+        "Bridle leather handles and trim",
+        "Separate padded shoe compartment",
+        "Detachable shoulder strap"
+      ],
+      "material": "Waxed cotton canvas, bridle leather, solid brass hardware.",
+      "care": "Spot clean the canvas. Condition the leather occasionally.",
+      "sizes": [
+        "One size"
+      ],
+      "colors": [
+        {
+          "name": "Olive",
+          "hex": "#5a5e3e"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r16",
+          "author": "Ben A.",
+          "rating": 5,
+          "date": "2026-02-05",
+          "title": "Travel upgrade",
+          "body": "Beautifully built. Fits a long weekend's packing easily."
+        }
+      ],
+      "images": [
+        "/images/products/rowan-canvas-weekender-1.jpg",
+        "/images/products/rowan-canvas-weekender-2.jpg"
+      ]
+    },
+    {
+      "id": 13,
+      "slug": "orla-gold-hoops",
+      "name": "Orla Gold Hoops",
+      "tagline": "Chunky hoops in recycled gold vermeil",
+      "description": "Tubular hoops with a satisfying weight, made from recycled sterling silver and plated in a thick layer of 18k gold. Hinged closures make them easy to put on.",
+      "price": 165,
+      "category": "Jewelry",
+      "rating": 4.8,
+      "reviewCount": 298,
+      "stock": "in_stock",
+      "stockCount": 64,
+      "featured": true,
+      "isNew": false,
+      "features": [
+        "18k gold vermeil over recycled silver",
+        "25 mm diameter, 4 mm thick",
+        "Hinged snap closure",
+        "Hypoallergenic"
+      ],
+      "material": "Recycled 925 sterling silver with 2.5-micron 18k gold vermeil.",
+      "care": "Avoid water and perfume. Polish gently with a soft cloth.",
+      "sizes": [
+        "One size"
+      ],
+      "colors": [
+        {
+          "name": "Gold",
+          "hex": "#c9a45c"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r17",
+          "author": "Zoe C.",
+          "rating": 5,
+          "date": "2026-03-09",
+          "title": "Every-day hoops",
+          "body": "I haven't taken them off in weeks. No tarnishing so far."
+        }
+      ],
+      "images": [
+        "/images/products/orla-gold-hoops-1.jpg",
+        "/images/products/orla-gold-hoops-2.jpg"
+      ]
+    },
+    {
+      "id": 14,
+      "slug": "sable-signet-ring",
+      "name": "Sable Signet Ring",
+      "tagline": "Solid sterling silver, made to engrave",
+      "description": "A low-profile oval signet cast in solid recycled sterling silver with a softly brushed finish. The flat face is ready for engraving.",
+      "price": 140,
+      "category": "Jewelry",
+      "rating": 4.7,
+      "reviewCount": 112,
+      "stock": "in_stock",
+      "stockCount": 45,
+      "featured": false,
+      "isNew": true,
+      "features": [
+        "Solid recycled sterling silver",
+        "Brushed face, polished band",
+        "Oval face, 12 × 10 mm",
+        "Ready for engraving"
+      ],
+      "material": "Recycled 925 sterling silver.",
+      "care": "Polish with a silver cloth. Store in its pouch to prevent scratches.",
+      "sizes": [
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10"
+      ],
+      "colors": [
+        {
+          "name": "Silver",
+          "hex": "#c4c4c2"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r18",
+          "author": "Sam D.",
+          "rating": 5,
+          "date": "2026-01-17",
+          "title": "Solid and simple",
+          "body": "Nice weight, and the brushed face looks great. Sizing was accurate."
+        }
+      ],
+      "images": [
+        "/images/products/sable-signet-ring-1.jpg",
+        "/images/products/sable-signet-ring-2.jpg"
+      ]
+    },
+    {
+      "id": 15,
+      "slug": "lune-pearl-pendant",
+      "name": "Lune Pearl Pendant",
+      "tagline": "A single freshwater pearl on a fine chain",
+      "description": "One baroque freshwater pearl, each slightly different in shape, hung on a fine 18k gold vermeil chain. Adjustable to three lengths.",
+      "price": 185,
+      "category": "Jewelry",
+      "rating": 4.9,
+      "reviewCount": 187,
+      "stock": "low_stock",
+      "stockCount": 6,
+      "featured": false,
+      "isNew": false,
+      "features": [
+        "Baroque freshwater pearl, 9 to 11 mm",
+        "18k gold vermeil chain",
+        "Adjusts to 40, 43 or 45 cm",
+        "Each pearl is unique"
+      ],
+      "material": "Freshwater pearl, 18k gold vermeil over recycled silver.",
+      "care": "Put on last, take off first. Wipe with a soft damp cloth.",
+      "sizes": [
+        "One size"
+      ],
+      "colors": [
+        {
+          "name": "Gold",
+          "hex": "#c9a45c"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r19",
+          "author": "Ivy R.",
+          "rating": 5,
+          "date": "2026-02-20",
+          "title": "Delicate and lovely",
+          "body": "The pearl has a beautiful lustre. Bought one for my sister too."
+        }
+      ],
+      "images": [
+        "/images/products/lune-pearl-pendant-1.jpg",
+        "/images/products/lune-pearl-pendant-2.jpg"
+      ]
+    },
+    {
+      "id": 16,
+      "slug": "wren-cashmere-scarf",
+      "name": "Wren Cashmere Scarf",
+      "tagline": "Woven cashmere, hand-twisted fringe",
+      "description": "A generous scarf woven from pure cashmere and brushed for a soft, cloud-like finish. The fringe is hand-twisted, and it is wide enough to wear as a wrap.",
+      "price": 175,
+      "category": "Accessories",
+      "rating": 4.9,
+      "reviewCount": 241,
+      "stock": "in_stock",
+      "stockCount": 52,
+      "featured": true,
+      "isNew": false,
+      "features": [
+        "Pure woven cashmere",
+        "190 × 35 cm",
+        "Hand-twisted fringe",
+        "Brushed finish"
+      ],
+      "material": "100% cashmere, woven in Scotland.",
+      "care": "Dry clean or hand wash cold. Dry flat.",
+      "sizes": [
+        "One size"
+      ],
+      "colors": [
+        {
+          "name": "Camel",
+          "hex": "#b8875a"
+        },
+        {
+          "name": "Oatmeal",
+          "hex": "#d9cbb3"
+        },
+        {
+          "name": "Oxblood",
+          "hex": "#5e2226"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r20",
+          "author": "Rachel V.",
+          "rating": 5,
+          "date": "2025-12-12",
+          "title": "Luxurious",
+          "body": "So soft and big enough to double as a wrap on planes."
+        }
+      ],
+      "images": [
+        "/images/products/wren-cashmere-scarf-1.jpg",
+        "/images/products/wren-cashmere-scarf-2.jpg"
+      ]
+    },
+    {
+      "id": 17,
+      "slug": "ashby-leather-belt",
+      "name": "Ashby Leather Belt",
+      "tagline": "Bridle leather, solid brass buckle",
+      "description": "A 30 mm belt cut from English bridle leather with a solid brass roller buckle. It is stitched by hand and will outlast a dozen cheaper belts.",
+      "price": 95,
+      "category": "Accessories",
+      "rating": 4.8,
+      "reviewCount": 164,
+      "stock": "in_stock",
+      "stockCount": 70,
+      "featured": false,
+      "isNew": false,
+      "features": [
+        "English bridle leather",
+        "Solid brass roller buckle",
+        "30 mm width",
+        "Hand-stitched keeper"
+      ],
+      "material": "English bridle leather with solid brass hardware.",
+      "care": "Condition occasionally. Unfasten fully when not worn.",
+      "sizes": [
+        "75",
+        "80",
+        "85",
+        "90",
+        "95",
+        "100"
+      ],
+      "colors": [
+        {
+          "name": "Chocolate",
+          "hex": "#4a3326"
+        },
+        {
+          "name": "Black",
+          "hex": "#1f1e1c"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r21",
+          "author": "Chris E.",
+          "rating": 5,
+          "date": "2026-03-14",
+          "title": "Built like a saddle",
+          "body": "Stiff at first, but it's the last belt I'll buy. Sizing guide is accurate."
+        }
+      ],
+      "images": [
+        "/images/products/ashby-leather-belt-1.jpg",
+        "/images/products/ashby-leather-belt-2.jpg"
+      ]
+    },
+    {
+      "id": 18,
+      "slug": "cato-acetate-sunglasses",
+      "name": "Cato Acetate Sunglasses",
+      "tagline": "Handmade acetate, polarised lenses",
+      "description": "Softly rounded frames polished by hand from Italian acetate, with polarised mineral glass lenses. They come with a leather case and a cleaning cloth.",
+      "price": 210,
+      "category": "Accessories",
+      "rating": 4.6,
+      "reviewCount": 98,
+      "stock": "in_stock",
+      "stockCount": 33,
+      "featured": false,
+      "isNew": true,
+      "features": [
+        "Hand-polished Italian acetate",
+        "Polarised mineral glass lenses, UV400",
+        "Five-barrel hinges",
+        "Leather case included"
+      ],
+      "material": "Italian acetate with mineral glass lenses.",
+      "care": "Clean with the included cloth. Store in the case.",
+      "sizes": [
+        "One size"
+      ],
+      "colors": [
+        {
+          "name": "Tortoise",
+          "hex": "#6b4a2e"
+        },
+        {
+          "name": "Black",
+          "hex": "#1f1e1c"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "r22",
+          "author": "Leah J.",
+          "rating": 4,
+          "date": "2026-04-20",
+          "title": "Beautiful frames",
+          "body": "Lovely quality acetate. They sit a little wide on a narrow face."
+        }
+      ],
+      "images": [
+        "/images/products/cato-acetate-sunglasses-1.jpg",
+        "/images/products/cato-acetate-sunglasses-2.jpg"
+      ]
+    }
+  ]
+}

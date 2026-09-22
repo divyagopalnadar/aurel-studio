@@ -5,8 +5,9 @@ import { ProductDetail } from "@/components/ProductDetail";
 import { ProductCard } from "@/components/ProductCard";
 import { formatPrice } from "@/lib/utils";
 
-export const dynamicParams = true;
-
+// Every catalog product is prerendered. In the database build, products added
+// later through the admin are rendered on demand (dynamicParams defaults to
+// true); the static export only contains the prerendered ones.
 export async function generateStaticParams() {
   const products = await getProducts();
   return products.map((p) => ({ id: String(p.id) }));

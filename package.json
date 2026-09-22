@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "dev:static": "NEXT_PUBLIC_DATA_SOURCE=static next dev",
+    "build:static": "NEXT_PUBLIC_DATA_SOURCE=static next build",
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
